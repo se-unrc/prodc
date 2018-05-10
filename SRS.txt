@@ -1,0 +1,66 @@
+SRS (Software Requirement Specification)
+----------------------------------------
+	
+		--- Integrantes ---
+
+Boaglio, Agustin.
+Menendez, Josué.
+Magnoli, Román.	
+
+
+		--- Introducción ---
+  
+  Este documento es un SRS para un prode. Principalmente definiremos la intencion del programa
+y posteriormente definiremos el programa propiamente dicho.
+
++ Intención del Programa:
+
+  La intención de este programa es la de aprender el uso de herramientas aplicadas como git, junit, etc. 
+El mismo se entregara como proyecto final de la materia Analisis y Diseño de Sistemas correspodiente a la carrera 
+Analista en Computación de la Universidad Nacional de Rio Cuarto.
+
++ Definicion del programa Prode:
+
+  Este programa es una aplicación utilizada para jugar a predecir resultados deportivos, previos a las fechas de juego
+y con esto, luego de que la fecha finalice, se realizan comparaciones con los resultados predichos por los jugadores
+de nuestra aplicacacion y con el resultado real de la fecha jugada. En base a esto se calculan cuantos aciertos tiene cada
+usuario y se suman los puntos ganados al jugador correspondiente.
+
+
+		--- Funciones del programa ---
+
++ Registro: Luego de bajar la aplicación, el usuario accede a esta y se registra para poder jugar.
+Completado el registro, el usuario puede loguearse y empezar a jugar.
+
++ Logueo: Un usuario registrado puede loguearse para acceder a la aplicación.
+
++ Predecir un Resultado: Cuando un usuario ya registrado se loguea en la aplicación, tiene la posibilidad
+de generar un fixture de la fecha siguiente para poder predecir los resultados.
+
++ Ver los Resultados de las Predicciones: Finalizada una fecha, un usuario puede acceder a la aplicación
+y observar los resultados de su predicción para saber cuantos puntos ganó en la fecha.
+
++ Ver Tablas de Puntuaciones por Fecha/Generales: En cualquier momento, un usuario registrado puede acceder a 
+las tablas de puntos por fecha o general, las cuales contienen los puntajes de los demas usuarios.
+
++ Cargar equipos: Un usuario administrador puede acceder a la aplicación a cargar los equipos que jugaran en el
+torneo. 
+
++ Cargar resultados de las fechas: Una vez finalizada la fecha, un usuario administrador puede cargar los resultados
+de los partidos de la fecha en la aplicación.
+
++ Cargar el fixture: Un usuario administrador debe cargar el fixture del campeonato completo en la aplicacion, proporcionado 
+por la institucion a cargo del campeonato.
+
+
+		--- Actores ---
+
++ Usuario Común: Un usuario es una parsona que ha descargardo la aplicación y se registró en el sistema. Este puede loguearse, predecir resultados, ver sus puntuaciones por fecha y ver la tabla general.
+
++ Usuario Administrador: Un usuario administrador es el que se encarga de el manejo de la aplicación, cargando los equipos, el fixture y
+los resultados por fecha.
+
+
+		--- Interfaz ---
+
+  Esta aplicación va a ser implementada en JAVA y la base de datos en MySQL y va a ser usada en computadora.
