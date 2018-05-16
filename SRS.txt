@@ -5,7 +5,11 @@ SRS (Software Requirement Specification)
 
 Boaglio, Agustin.
 Menendez, Josué.
-Magnoli, Román.	
+Magnoli, Román.
+
+		--- Pivotal Tracker ---
+
+https://www.pivotaltracker.com/n/projects/2162663	
 
 
 		--- Introducción ---
