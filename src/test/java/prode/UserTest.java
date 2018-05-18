@@ -28,7 +28,6 @@ public class UserTest {
   public void validatePrecenseOfUsernames(){
       User user = new User();
       user.set("username", "");
-
       assertEquals(user.isValid(), false);
   }
 }
