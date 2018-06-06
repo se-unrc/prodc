@@ -11,7 +11,7 @@
   <properties>
     <activejdbc.version>2.0</activejdbc.version>
     <environments>development.test,development</environments>
-    <project.basedir>/Users/franco/unrc/Materias/Disenio/2018/prode-app</project.basedir>
+    <project.basedir>/home/rain/Proyectos/UNRC/Analisis/prodc</project.basedir>
   </properties>
 
 
@@ -30,23 +30,28 @@
     </dependency>
 
     <dependency>
-        <groupId>com.sparkjava</groupId>
-        <artifactId>spark-core</artifactId>
-        <version>2.7.2</version>
-    </dependency>
-
-    <dependency>
-        <groupId>com.sparkjava</groupId>
-        <artifactId>spark-template-velocity</artifactId>
-        <version>2.7.1</version>
-    </dependency>
-
-    <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>6.0.6</version>
     </dependency>
 
+    <dependency>
+        <groupId>com.sparkjava</groupId>
+        <artifactId>spark-core</artifactId>
+        <version>2.6.0</version>
+     </dependency>
+
+     <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-simple</artifactId>
+          <version>1.7.21</version>
+        </dependency>
+
+    <dependency>
+         <groupId>com.sparkjava</groupId>
+         <artifactId>spark-template-mustache</artifactId>
+         <version>2.5.5</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -59,10 +64,8 @@
                 <source>1.8</source>
                 <target>1.8</target>
             </configuration>
-        </plugin>
-
-
-        <plugin>
+      </plugin>
+      <plugin>
            <artifactId>maven-assembly-plugin</artifactId>
            <executions>
                <execution>
@@ -82,9 +85,7 @@
                    </manifest>
                </archive>
            </configuration>
-        </plugin>
-
-
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -103,7 +104,6 @@
             </excludes>
         </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.javalite</groupId>
         <artifactId>activejdbc-instrumentation</artifactId>
@@ -117,7 +117,6 @@
             </execution>
         </executions>
       </plugin>
-
       <plugin>
         <groupId>org.javalite</groupId>
         <artifactId>db-migrator-maven-plugin</artifactId>
@@ -144,9 +143,6 @@
       </dependencies>
     </plugin>
 
-
-    </plugins>
-  </build>
-
-
+  </plugins>
+</build>
 </project>
