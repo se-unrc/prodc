@@ -28,7 +28,7 @@ public class App
         //      );
         //
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
-        User u = new User("ramiro","ramiro1935@gmail.com","123456");
+        User u = new User("ramiro1","ramiro1935@gmail.com","123456");
         System.out.println(u.getComplete());
         Base.close();
     }
