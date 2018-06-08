@@ -4,11 +4,7 @@ echo "*******************  BUILDING MODULE  ************************************
 mvn clean install
 
 echo "*******************  COLLECTING DEPENDENCIES  *********************************"
-mvn dependency:copy-dependencies
-export CLASPATH=""
-for file in `ls target/dependency`; do export CLASSPATH=$CLASSPATH:target/dependency/$file; done
-export CLASSPATH=$CLASSPATH:target/classes
+mvn package
 
 echo "*******************  EXECUTING PROGRAM******************************************"
-java -cp $CLASSPATH -Dactivejdbc.log prode.App
-
+java -cp target/prode-app-1.0-SNAPSHOT-jar-with-dependencies.jar -Dactivejdbc.log prode.App

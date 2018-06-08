@@ -3,9 +3,7 @@
 import spark.template.mustache.MustacheTemplateEngine;
 import static spark.Spark.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.javalite.activejdbc.Base;
 
@@ -20,8 +18,16 @@ public class UserController {
 	private List<Map> lmap;
 
 	public UserController(final UserService userService) {
-
   map = new HashMap();
+
+
+  before("/users/*",(request, response) -> {
+    boolean authenticated = request.session().attribute("USER")!= null;
+    if (!authenticated) {
+      halt(401, "You are not welcome here");
+    }
+  });
+
   get("/users", (req, res) -> {
     List<User> lu = userService.getAllUsers();
     for(User us: lu) {
@@ -44,6 +50,21 @@ public class UserController {
 
 
     post("/users", (req, res) -> {
+      String username = req.queryParams("username");
+      String pass = req.queryParams("password");
+      User user = userService.getUser(username);
+      if(user != null){
+        req.session(true);
+        req.session().attribute("USER",username);
+      }
+      else return new ModelAndView(null, "./404.mustache");
+      map.put("email",user.getemail());
+      map.put("name",req.session().attribute("SESSION_NAME"));
+      return new ModelAndView(map, "./Dashboard/index.mustache");
+    }, new MustacheTemplateEngine());
+
+
+    post("/create/user", (req, res) -> {
       String username = req.queryParams("username");
       String pass = req.queryParams("password");
       User user = userService.getUser(username);
