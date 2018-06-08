@@ -1,4 +1,4 @@
- package Controllers;
+package Controllers;
 
 import spark.template.mustache.MustacheTemplateEngine;
 import static spark.Spark.*;
@@ -19,7 +19,6 @@ public class UserController {
 
 	public UserController(final UserService userService) {
   map = new HashMap();
-
 
   before("/users/*",(request, response) -> {
     boolean authenticated = request.session().attribute("USER")!= null;

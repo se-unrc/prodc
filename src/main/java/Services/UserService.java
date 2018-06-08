@@ -11,6 +11,8 @@ import prode.User;
 
 public class UserService {
 
+
+
 	private Map<String, User> users = new HashMap<>();
 
 	public List<User> getAllUsers() {
@@ -20,34 +22,30 @@ public class UserService {
     return u;
 	}
 
-	public User getUser(String nick) {
-    Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
-    User usr = User.findFirst("nick = ?",nick);
-    //LazyList<Model> u = User.where("nick = ?", nick);
-    //User usr =  (u!= null)?(User)u.get(0):null;
-    Base.close();
-	  return usr;
+	public User getUser(String id) {
+    User u = User.findFirst("nick = ?", id);
+	  return u;
 	}
 
 	// public User createUser(String name, String email) {
-	// 	failIfInvalnick(name, email);
+	// 	failIfInvalid(name, email);
 	// 	User user = new User(name, email);
-	// 	users.put(user.getnick(), user);
+	// 	users.put(user.getId(), user);
 	// 	return user;
 	// }
   //
-	// public User updateUser(String nick, String name, String email) {
-	// 	User user = users.get(nick);
+	// public User updateUser(String id, String name, String email) {
+	// 	User user = users.get(id);
 	// 	if (user == null) {
-	// 		throw new IllegalArgumentException("No user with nick '" + nick + "' found");
+	// 		throw new IllegalArgumentException("No user with id '" + id + "' found");
 	// 	}
-	// 	failIfInvalnick(name, email);
+	// 	failIfInvalid(name, email);
 	// 	user.setName(name);
 	// 	user.setEmail(email);
 	// 	return user;
 	// }
   //
-	// private vonick failIfInvalnick(String name, String email) {
+	// private void failIfInvalid(String name, String email) {
 	// 	if (name == null || name.isEmpty()) {
 	// 		throw new IllegalArgumentException("Parameter 'name' cannot be empty");
 	// 	}
