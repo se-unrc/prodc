@@ -38,18 +38,19 @@ public class UserController {
       if(user == null){
         return new ModelAndView(null, "./404.mustache");
       }
-      map.put("name",user.getemail());
+      map.put("email",user.getemail());
       return new ModelAndView(map, "./Dashboard/index.mustache");
 		}, new MustacheTemplateEngine());
 
 
     post("/users", (req, res) -> {
-      String id = req.queryParams("username");
-      User user = userService.getUser(id);
+      String username = req.queryParams("username");
+      String pass = req.queryParams("password");
+      User user = userService.getUser(username);
       if(user == null){
         return new ModelAndView(null, "./404.mustache");
       }
-      map.put("name",user.getemail());
+      map.put("email",user.getemail());
       return new ModelAndView(map, "./Dashboard/index.mustache");
     }, new MustacheTemplateEngine());
   }
