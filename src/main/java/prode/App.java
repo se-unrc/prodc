@@ -18,10 +18,12 @@ public class App
 {
     public static void main( String[] args )
     {
-         port(4445);
-        // staticFiles.location("/public");
+       port(4445);
+       get("/", (req, res) -> {
+           return new ModelAndView(null, "./Dashboard/hello.mustache");
+         }, new MustacheTemplateEngine()
+       );
 
-        
         new UserController(new UserService());
       }
 }

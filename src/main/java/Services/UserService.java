@@ -14,10 +14,9 @@ public class UserService {
 
 	public List<User> getAllUsers() {
     Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
-    LazyList<Model> u = User.where("nick = ?", id);
-    User usr =  (u!= null)?(User)u.get(0):null;
+    List<User> u = User.findAll();
     Base.close();
-    return usr;
+    return u;
 	}
 
 	public User getUser(String id) {
@@ -27,14 +26,14 @@ public class UserService {
     Base.close();
 	  return usr;
 	}
-  //
+
 	// public User createUser(String name, String email) {
 	// 	failIfInvalid(name, email);
 	// 	User user = new User(name, email);
 	// 	users.put(user.getId(), user);
 	// 	return user;
 	// }
-  //
+  // 
 	// public User updateUser(String id, String name, String email) {
 	// 	User user = users.get(id);
 	// 	if (user == null) {
