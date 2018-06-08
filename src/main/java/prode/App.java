@@ -18,7 +18,17 @@ public class App
 {
     public static void main( String[] args )
     {
+       staticFiles.location("/public/");
        port(4445);
+
+       before((request, response) -> {
+         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
+       });
+
+       after((request, response) -> {
+         Base.close();
+       });
+
        get("/", (req, res) -> {
            return new ModelAndView(null, "./Dashboard/hello.mustache");
          }, new MustacheTemplateEngine()
