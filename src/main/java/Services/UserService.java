@@ -11,29 +11,31 @@ import prode.User;
 
 public class UserService {
 
-
-
-	private Map<String, User> users = new HashMap<>();
-
 	public List<User> getAllUsers() {
-
-    List<User> u = User.findAll();
-    Base.close();
-    return u;
+    List<User> users;
+    users = User.findAll();
+    return users;
 	}
 
+  //Retorna un usuario por id
 	public User getUser(String id) {
-    User u = User.findFirst("nick = ?", id);
-	  return u;
+    User user;
+    user = User.findFirst("nick = ?", id);
+	  return user;
 	}
 
-	// public User createUser(String name, String email) {
-	// 	failIfInvalid(name, email);
-	// 	User user = new User(name, email);
-	// 	users.put(user.getId(), user);
-	// 	return user;
-	// }
-  //
+  //Crea un usuario
+	public User createUser(String name, String password, String email) {
+    User user;
+		user = new User(name, email, password);
+		return user;
+	}
+
+  public User isUser(String name, String password){
+    User user = User.findFirst("nick = ? AND password = ?", name, password);
+    return user;
+  }
+
 	// public User updateUser(String id, String name, String email) {
 	// 	User user = users.get(id);
 	// 	if (user == null) {
@@ -44,13 +46,5 @@ public class UserService {
 	// 	user.setEmail(email);
 	// 	return user;
 	// }
-  //
-	// private void failIfInvalid(String name, String email) {
-	// 	if (name == null || name.isEmpty()) {
-	// 		throw new IllegalArgumentException("Parameter 'name' cannot be empty");
-	// 	}
-	// 	if (email == null || email.isEmpty()) {
-	// 		throw new IllegalArgumentException("Parameter 'email' cannot be empty");
-	// 	}
-	// }
+
 }

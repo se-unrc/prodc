@@ -19,7 +19,7 @@ public class App
     public static void main( String[] args )
     {
        staticFiles.location("/public/");
-       port(4445);
+       port(1111);
 
        before((request, response) -> {
          Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
@@ -30,7 +30,9 @@ public class App
        });
 
        get("/", (req, res) -> {
-           return new ModelAndView(null, "./Dashboard/hello.mustache");
+           Map map = new HashMap();
+           map.put("error",false);
+           return new ModelAndView(map, "./Dashboard/index.mustache");
          }, new MustacheTemplateEngine()
        );
 

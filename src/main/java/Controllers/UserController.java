@@ -8,17 +8,20 @@ import java.util.*;
 import org.javalite.activejdbc.Base;
 
 import Services.UserService;
-import prode.ResponseError;
 import prode.User;
 import spark.ModelAndView;
 
 public class UserController {
 
-	private Map map;
-	private List<Map> lmap;
 
 	public UserController(final UserService userService) {
-  map = new HashMap();
+
+  before("/profile/*",(request, response) -> {
+    boolean authenticated = request.session().attribute("USER")!= null;
+    if (!authenticated) {
+      halt(401, "You are not welcome here");
+    }
+  });
 
   before("/users/*",(request, response) -> {
     boolean authenticated = request.session().attribute("USER")!= null;
@@ -27,51 +30,55 @@ public class UserController {
     }
   });
 
-  get("/users", (req, res) -> {
+
+  get("/prueba", (req, res) -> {
+		Map<String,List<User>> map = new HashMap<>();
     List<User> lu = userService.getAllUsers();
-    for(User us: lu) {
-    	map = new HashMap();
-    	lmap.add((Map) map.put("name", us.getemail()));
-    }
-    return new ModelAndView(lmap, "./Dashboard/hello.mustache");
+		map.put("users",lu);
+    return new ModelAndView(map, "./Dashboard/users.mustache");
   }, new MustacheTemplateEngine());
 
 
   get("/users/:id", (req, res) -> {
+			Map map = new HashMap();
 			String id = req.params(":id");
 			User user = userService.getUser(id);
       if(user == null){
         return new ModelAndView(null, "./404.mustache");
       }
-      map.put("email",user.getemail());
+      map.put("email",user.getEmail());
       return new ModelAndView(map, "./Dashboard/index.mustache");
 		}, new MustacheTemplateEngine());
 
-
-    post("/users", (req, res) -> {
+		//Autenticacion
+    post("/profile", (req, res) -> {
+			Map map = new HashMap();
       String username = req.queryParams("username");
       String pass = req.queryParams("password");
-      User user = userService.getUser(username);
+      User user = userService.isUser(username,pass);
       if(user != null){
         req.session(true);
         req.session().attribute("USER",username);
+				map.put("email",user.getEmail());
+				map.put("name",req.session().attribute("SESSION_NAME"));
       }
-      else return new ModelAndView(null, "./404.mustache");
-      map.put("email",user.getemail());
-      map.put("name",req.session().attribute("SESSION_NAME"));
-      return new ModelAndView(map, "./Dashboard/index.mustache");
+			else{
+				map.put("error",true);
+				return new ModelAndView(map, "./Dashboard/index.mustache");
+			}
+      return new ModelAndView(map, "./Dashboard/profile.mustache");
     }, new MustacheTemplateEngine());
 
 
-    post("/create/user", (req, res) -> {
+    post("/new/user", (req, res) -> {
       String username = req.queryParams("username");
       String pass = req.queryParams("password");
-      User user = userService.getUser(username);
+      String email = req.queryParams("email");
+      User user = userService.createUser(username,pass,email);
       if(user == null){
         return new ModelAndView(null, "./404.mustache");
       }
-      map.put("email",user.getemail());
-      return new ModelAndView(map, "./Dashboard/index.mustache");
+      return new ModelAndView(null, "./Dashboard/index.mustache");
     }, new MustacheTemplateEngine());
   }
 }
