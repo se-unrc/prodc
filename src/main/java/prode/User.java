@@ -10,7 +10,6 @@ public class User extends Model {
 
     public User() {}
 
-    //Registro de usuarios
     public User(String name, String email, String password){
       set("nick",name);
       set("email",email);
@@ -21,7 +20,12 @@ public class User extends Model {
     }
 
     public String getName(){ return getString("nick"); }
-    public String getemail(){ return getString("email"); }
-    public String getpassword(){ return getString("password"); }
+    public String getEmail(){ return getString("email"); }
+    public String getPassword(){ return getString("password"); }
+
+
+    public String toString(){
+      return this.getName() + this.getEmail();
+    }
 
 }
