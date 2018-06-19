@@ -1,29 +1,41 @@
 package prode;
 
 import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.LazyList;
+import org.javalite.activejdbc.Model;
 
-import prode.User;
+import Controllers.UserController;
+import Services.UserService;
 
+import java.util.HashMap;
+import java.util.Map;
+import spark.ModelAndView;
+import spark.template.mustache.MustacheTemplateEngine;
 
+import static spark.Spark.*;
 
-/**
- * Hello world!
- *
- */
 public class App
 {
     public static void main( String[] args )
     {
+       staticFiles.location("/public/");
+       port(1111);
 
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode?nullNamePatternMatchesAll=true", "franco", "franco");
+       before((request, response) -> {
+         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
+       });
 
-        User u = new User();
-        u.set("username", "Riquelme");
-        u.set("password", "password");
-        u.saveIt();
+       after((request, response) -> {
+         Base.close();
+       });
 
-        Base.close();
+       get("/", (req, res) -> {
+           Map map = new HashMap();
+           map.put("error",false);
+           return new ModelAndView(map, "./Dashboard/index.mustache");
+         }, new MustacheTemplateEngine()
+       );
 
-        System.out.println( "Hello World!" );
-    }
+        new UserController(new UserService());
+      }
 }
