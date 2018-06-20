@@ -10,15 +10,29 @@ public class Prediction extends Model {
 
   public Prediction(){}
 
-  public Prediction(int id_game, String nick, String winner){
+  public Prediction(int id_game, String nick, String local, String visitante, int fecha) {
     set("id_game",id_game);
-    set("nick",nick);
-    set("winner",winner);
+    set("nick",nick); //funciona como el id de usuario
+    set("team_loc", local);
+    set("team_vis", visitante);
+    set("fecha", fecha);
     saveIt();
   }
 
-  public String getIdGame(){return getString("id_game");}
-  public String getNick(){return getString("nick");}
-  public String getWinner(){return getString("winner");}
+  public int getIdGame(){
+	  return ((int) get("id_game"));
+  }
+  public String getNick(){
+	  return getString("nick");
+  }
+  public String getTeamLoc() {
+	  return (getString("team_loc"));
+  }
+  public String getTeamVis() {
+	  return (getString("team_vis"));
+  }
+  public int getFecha() {
+	  return ((int) get("fecha"));
+  }
 
 }

@@ -19,10 +19,10 @@ public class App
     public static void main( String[] args )
     {
        staticFiles.location("/public/");
-       port(1111);
+       port(1112);
 
        before((request, response) -> {
-         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
+         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "");
        });
 
        after((request, response) -> {
