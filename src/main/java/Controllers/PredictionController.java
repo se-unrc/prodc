@@ -21,19 +21,19 @@ public class PredictionController {
       String option = req.queryParams("option");
 			map.put("result",option);
 			switch(option){
-				case "octavos":
+				case "Octavos":
 					return new ModelAndView(map, "./Dashboard/octavos.mustache");
-				case "cuartos":
+				case "Cuartos":
 					return new ModelAndView(map, "./Dashboard/cuartos.mustache");
-				case "semifinales":
+				case "Semifinales":
 					return new ModelAndView(map, "./Dashboard/cuartos.mustache");
-				case "finales":
+				case "Finales":
 					return new ModelAndView(map, "./Dashboard/cuartos.mustache");
 			}
       return new ModelAndView(null, "./Dashboard/index.mustache");
     }, new MustacheTemplateEngine());
 
-    post("/prediction/new", (req, res) -> {
+    post("/prediction", (req, res) -> {
 			Map map = new HashMap();
       String option = req.queryParams("prueba");
 			map.put("result",option);
