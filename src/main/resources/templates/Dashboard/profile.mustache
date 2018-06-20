@@ -1,5 +1,20 @@
 {{> header }}
   <div class="container">
-    {{email}}
+    <form action="/prediction" method="post">
+      <div class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" role="group">
+          <input type="submit" value="octavos" name="option" class="btn btn-primary"/>
+        </div>
+        <div class="btn-group" role="group">
+          <input type="submit" value="cuartos" name="option" class="btn btn-primary"/>
+        </div>
+        <div class="btn-group" role="group">
+          <input type="submit" value="semifinales" name="option" class="btn btn-primary"/>
+        </div>
+        <div class="btn-group" role="group">
+          <input type="submit" value="finales" name="option" class="btn btn-primary"/>
+        </div>
+      </div>
+    </form>
   </div>
 {{> footer }}

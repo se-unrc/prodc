@@ -4,7 +4,7 @@ import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.LazyList;
 import org.javalite.activejdbc.Model;
 
-import Controllers.UserController;
+import Controllers.*;
 import Services.UserService;
 
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class App
        port(1112);
 
        before((request, response) -> {
-         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "");
+         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
        });
 
        after((request, response) -> {
@@ -37,5 +37,6 @@ public class App
        );
 
         new UserController(new UserService());
+        new PredictionController(new UserService());
       }
 }
