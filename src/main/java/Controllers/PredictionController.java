@@ -7,14 +7,14 @@ import java.util.*;
 
 import org.javalite.activejdbc.Base;
 
-import Services.PredictionService;
-import prode.Prediction;
+import Services.*;
+ 	 	import prode.Prediction;
 import spark.ModelAndView;
 
 public class PredictionController {
 
 
-	public PredictionController(final PredictionService predictionService) {
+	public PredictionController(final PredictionService predictionService, final GameService gameService ) {
 
     post("/prediction", (req, res) -> {
 			Map map = new HashMap();
@@ -34,13 +34,19 @@ public class PredictionController {
     }, new MustacheTemplateEngine());
 
     post("/prediction/new", (req, res) -> {
-			Map map = new HashMap();
-      String  fecha = (req.queryParams("registro")).toString();
-      int option = Integer.parseInt(fecha);
-			String nick = req.session().attribute("USER");
 			String[] games = req.queryParamsValues("octavos[]");
-			predictionService.createPrediction(nick, option, games);
-      return new ModelAndView(map, "./Dashboard/profile.mustache");
+			String  fecha = (req.queryParams("registro")).toString();
+			int option = Integer.parseInt(fecha);
+			int id_user = req.session().attribute("ID");
+			String type = req.session().attribute("TYPE");
+			if(type.equalsIgnoreCase("1")){
+         gameService.updateGames(option, games);
+       }
+ 			else {
+        System.out.println("ENTROOOOOOOOOOO AQUIIIIIIIIIIIIIIIIIII");
+        predictionService.createPrediction(id_user, option, games);
+      }
+      return new ModelAndView(null, "./Dashboard/profile.mustache");
     }, new MustacheTemplateEngine());
 
   }

@@ -22,7 +22,8 @@ public class User extends Model {
     public String getName(){ return getString("nick"); }
     public String getEmail(){ return getString("email"); }
     public String getPassword(){ return getString("password"); }
-
+    public String getScore(){ return getString("score"); }
+    public String getType(){ return getString("type"); }
 
     public String toString(){
       return this.getName() + this.getEmail();

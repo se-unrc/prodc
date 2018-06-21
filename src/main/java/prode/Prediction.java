@@ -10,17 +10,17 @@ public class Prediction extends Model {
 
   public Prediction(){}
 
-  public Prediction(int id_game, String nick, String local, String visitante, int fecha) {
+  public Prediction(int id_game, int id_user, String local, String visitante, int fecha) {
     set("id_game",id_game);
-    set("nick",nick); //funciona como el id de usuario
+    set("id_user",id_user); //funciona como el id de usuario
     set("team_local", local);
     set("team_visitante", visitante);
     set("fecha", fecha);
     saveIt();
   }
   /*
-  public void setsP(int id_game, String nick, String local, String visitante, int fecha) {
-	set("id_game",id_game);
+  public void setsP(int , String nick, String local, String visitante, int fecha) {
+	set("",);
 	set("nick",nick); //funciona como el id de usuario
 	set("team_loc", local);
 	set("team_vis", visitante);
@@ -30,10 +30,10 @@ public class Prediction extends Model {
   */
 
   public int getIdGame(){
-	  return ((int) get("id_game"));
+	  return ((int) get("id"));
   }
-  public String getNick(){
-	  return getString("nick");
+  public int getIdUser(){
+    return ((int) get("id_user"));
   }
   public String getTeamLoc() {
 	  return (getString("team_loc"));

@@ -1,0 +1,22 @@
+{{> header}}
+  <div class="container">
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Puntos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#users}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{email}}</td>
+          <td>{{score}}</td>
+        </tr>
+      {{/users}}
+    </tbody>
+  </table>
+  </div>
+{{> footer}}

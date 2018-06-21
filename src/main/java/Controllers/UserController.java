@@ -60,8 +60,8 @@ public class UserController {
       if(user != null){
         req.session(true);
         req.session().attribute("USER",username);
-				map.put("email",user.getEmail());
-				map.put("name",req.session().attribute("SESSION_NAME"));
+        req.session().attribute("ID",user.getId());
+        req.session().attribute("TYPE",user.getType());
       }
 			else{
 				map.put("error",true);
