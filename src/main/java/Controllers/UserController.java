@@ -16,6 +16,7 @@ public class UserController {
 
 	public UserController(final UserService userService) {
 
+
   before("/profile/*",(request, response) -> {
     boolean authenticated = request.session().attribute("USER")!= null;
     if (!authenticated) {

@@ -7,7 +7,6 @@ CREATE TABLE predictions (
   fecha int(3),
   created_at DATETIME,
   updated_at DATETIME,
-  FOREING KEY (id_game) REFERENCES games(id_game)
-  FOREING KEY (fecha) REFERENCES games(fecha)
+  FOREIGN KEY (id_game) REFERENCES games(id_game),
   FOREIGN KEY (nick) REFERENCES users(nick)
 )ENGINE=InnoDB;

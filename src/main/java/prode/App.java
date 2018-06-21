@@ -5,7 +5,7 @@ import org.javalite.activejdbc.LazyList;
 import org.javalite.activejdbc.Model;
 
 import Controllers.*;
-import Services.UserService;
+import Services.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +38,6 @@ public class App
        );
 
         new UserController(new UserService());
-        new PredictionController(new UserService());
+        new PredictionController(new PredictionService());
       }
 }

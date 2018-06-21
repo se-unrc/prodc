@@ -7,14 +7,14 @@ import java.util.*;
 
 import org.javalite.activejdbc.Base;
 
-import Services.UserService;
-import prode.User;
+import Services.PredictionService;
+import prode.Prediction;
 import spark.ModelAndView;
 
 public class PredictionController {
 
 
-	public PredictionController(final UserService userService) {
+	public PredictionController(final PredictionService predictionService) {
 
     post("/prediction", (req, res) -> {
 			Map map = new HashMap();
@@ -33,10 +33,13 @@ public class PredictionController {
       return new ModelAndView(null, "./Dashboard/index.mustache");
     }, new MustacheTemplateEngine());
 
-    post("/prediction", (req, res) -> {
+    post("/prediction/new", (req, res) -> {
 			Map map = new HashMap();
-      String option = req.queryParams("prueba");
-			map.put("result",option);
+      String  fecha = (req.queryParams("registro")).toString();
+      int option = Integer.parseInt(fecha);
+			String nick = req.session().attribute("USER");
+			String[] games = req.queryParamsValues("octavos[]");
+			predictionService.createPrediction(nick, option, games);
       return new ModelAndView(map, "./Dashboard/profile.mustache");
     }, new MustacheTemplateEngine());
 
