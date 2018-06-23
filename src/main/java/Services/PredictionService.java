@@ -18,7 +18,9 @@ public class PredictionService {
    if(fecha==2) {c=13;} //semis
    if(fecha==3) {c=15;}
    while(i < equipos.length) {
-     Prediction p = new Prediction(c, id_user, equipos[i], equipos[i+1], fecha);
+    if(!equipos[i].isEmpty() && !equipos[i + 1].isEmpty()){
+      Prediction p = new Prediction(c, id_user, equipos[i], equipos[i+1], fecha);
+     }
      i=i+2;
      c++;
    }

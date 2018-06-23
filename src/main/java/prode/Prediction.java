@@ -12,22 +12,12 @@ public class Prediction extends Model {
 
   public Prediction(int id_game, int id_user, String local, String visitante, int fecha) {
     set("id_game",id_game);
-    set("id_user",id_user); //funciona como el id de usuario
+    set("id_user",id_user); 
     set("team_local", local);
     set("team_visitante", visitante);
     set("fecha", fecha);
     saveIt();
   }
-  /*
-  public void setsP(int , String nick, String local, String visitante, int fecha) {
-	set("",);
-	set("nick",nick); //funciona como el id de usuario
-	set("team_loc", local);
-	set("team_vis", visitante);
-	set("fecha", fecha);
-	saveIt();
-  }
-  */
 
   public int getIdGame(){
 	  return ((int) get("id"));

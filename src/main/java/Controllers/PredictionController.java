@@ -43,7 +43,6 @@ public class PredictionController {
          gameService.updateGames(option, games);
        }
  			else {
-        System.out.println("ENTROOOOOOOOOOO AQUIIIIIIIIIIIIIIIIIII");
         predictionService.createPrediction(id_user, option, games);
       }
       return new ModelAndView(null, "./Dashboard/profile.mustache");
