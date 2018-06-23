@@ -7,18 +7,18 @@ import java.util.*;
 
 import org.javalite.activejdbc.Base;
 
-import Services.UserService;
+import Services.GameService;
 import prode.User;
 import spark.ModelAndView;
 
 
 public class ResultsController {
 
-	public ResultsController(final UserService userService) {
+	public ResultsController(final GameService gameService) {
 
   get("/results", (req, res) -> {
 		Map<String,List<User>> map = new HashMap<>();
-    List<User> lu = userService.getAllUsers();
+    List<User> lu = gameService.listPoints();
 		map.put("users",lu);
     return new ModelAndView(map, "./Dashboard/results.mustache");
   }, new MustacheTemplateEngine());

@@ -39,6 +39,6 @@ public class App
 
         new UserController(new UserService());
         new PredictionController(new PredictionService(), new GameService());
-        new ResultsController(new UserService());
+        new ResultsController(new GameService());
       }
 }

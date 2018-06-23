@@ -41,6 +41,11 @@ public class GameService {
    }
   }
 
+  public List<User> listPoints(){
+    List<User> lu = User.findBySQL("SELECT * FROM users WHERE id != 1 ORDER BY score DESC LIMIT 10");
+    return lu;
+  }
+
 }
 /*
  */
