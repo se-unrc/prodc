@@ -40,6 +40,16 @@ public class UserController {
   }, new MustacheTemplateEngine());
 
 
+  get("/index", (req, res) -> {
+		Map map = new HashMap();
+		req.session().removeAttribute("USER");
+		req.session().removeAttribute("ID");
+		req.session().removeAttribute("TYPE");
+		map.put("message",true);
+    return new ModelAndView(map, "./Dashboard/index.mustache");
+  }, new MustacheTemplateEngine());
+
+
   get("/users/:id", (req, res) -> {
 			Map map = new HashMap();
 			String id = req.params(":id");
@@ -62,11 +72,18 @@ public class UserController {
         req.session().attribute("USER",username);
         req.session().attribute("ID",user.getId());
         req.session().attribute("TYPE",user.getType());
+				map.put("nombre",req.session().attribute("USER"));
       }
 			else{
 				map.put("error",true);
 				return new ModelAndView(map, "./Dashboard/index.mustache");
 			}
+      return new ModelAndView(map, "./Dashboard/profile.mustache");
+    }, new MustacheTemplateEngine());
+
+		get("/profile", (req, res) -> {
+			Map map = new HashMap();
+			map.put("nombre",req.session().attribute("USER"));
       return new ModelAndView(map, "./Dashboard/profile.mustache");
     }, new MustacheTemplateEngine());
 

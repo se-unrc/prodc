@@ -1,26 +1,27 @@
 {{> header}}
   <div class="container">
       <div class="panel panel-primary">
-      <div class="panel-heading">Puntajes usuarios</div>
+      <div class="panel-heading">Predicciones</div>
       <div class="panel-body">
-        <p>En esta sección se presentan los resultados hasta la fecha</p>
+        <p>Partidos que fueron jugados hasta el momento</p>
       </div>
       <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col">Nombre</th>
-          <th scope="col">Correo</th>
-          <th scope="col">Puntos</th>
+          <th scope="col">Bandera</th>
         </tr>
       </thead>
       <tbody>
-        {{#users}}
+        {{#games}}
           <tr>
             <td>{{name}}</td>
-            <td>{{email}}</td>
-            <td>{{score}}</td>
+            <td>
+              <img src="images/{{image}}" alt={{image}}>
+            </td>
+
           </tr>
-        {{/users}}
+        {{/games}}
       </tbody>
     </table>
     </div>

@@ -20,6 +20,7 @@ public class ResultsController {
 		Map<String,List<User>> map = new HashMap<>();
     List<User> lu = gameService.listPoints();
 		map.put("users",lu);
+		map.put("nombre",req.session().attribute("USER"));
     return new ModelAndView(map, "./Dashboard/results.mustache");
   }, new MustacheTemplateEngine());
 

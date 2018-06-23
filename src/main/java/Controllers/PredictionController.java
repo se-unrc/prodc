@@ -3,12 +3,15 @@ package Controllers;
 import spark.template.mustache.MustacheTemplateEngine;
 import static spark.Spark.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.javalite.activejdbc.Base;
 
 import Services.*;
- 	 	import prode.Prediction;
+import prode.Prediction;
+import prode.Team;
 import spark.ModelAndView;
 
 public class PredictionController {
@@ -19,6 +22,7 @@ public class PredictionController {
     post("/prediction", (req, res) -> {
 			Map map = new HashMap();
       String option = req.queryParams("option");
+      map.put("nombre",req.session().attribute("USER"));
 			map.put("result",option);
 			switch(option){
 				case "Octavos":
@@ -30,7 +34,7 @@ public class PredictionController {
 				case "Finales":
 					return new ModelAndView(map, "./Dashboard/cuartos.mustache");
 			}
-      return new ModelAndView(null, "./Dashboard/index.mustache");
+      return new ModelAndView(map, "./Dashboard/index.mustache");
     }, new MustacheTemplateEngine());
 
     post("/prediction/new", (req, res) -> {
@@ -46,6 +50,13 @@ public class PredictionController {
         predictionService.createPrediction(id_user, option, games);
       }
       return new ModelAndView(null, "./Dashboard/profile.mustache");
+    }, new MustacheTemplateEngine());
+
+    get("/teams", (req, res) -> {
+      Map<String, List<Team>> map = new HashMap<>();
+      List<Team> lt = gameService.listTeams();
+      map.put("games",lt);
+      return new ModelAndView(map, "./Dashboard/teams.mustache");
     }, new MustacheTemplateEngine());
 
   }
