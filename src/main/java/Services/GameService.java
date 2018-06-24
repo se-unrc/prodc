@@ -57,6 +57,12 @@ public class GameService {
     return lt;
   }
 
+  //Retorna todos los juegos actualizados
+  public List<Game> listGames(){
+    List<Game> lg = Game.findBySQL("SELECT * FROM games WHERE team_loc != '' AND team_vis != '';");
+    return lg;
+  }
+
 }
 /*
  */

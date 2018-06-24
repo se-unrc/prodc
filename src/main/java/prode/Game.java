@@ -31,6 +31,9 @@ public class Game extends Model {
 	  set("team_vis", equipoVisitante);
   }
 
+  public String getDateGame(){
+    return (getString("date_game"));
+  }
   public int getIdGame() {
 	  return ((int) get("id"));
   }

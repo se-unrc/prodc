@@ -5,6 +5,15 @@
   color: #fff!important;
   padding: 0px 10px;
 }
+.jumbo{
+  background-image: url("/images/cesped.jpg");
+  color: #fff!important;
+}
+.jumbo-in{
+  background: #ffffff7a!important;
+  padding:  10px!important;
+  border-radius: 25px!important;
+}
 .grupos{
   border: 1px solid #000;
   background: #ccc;
@@ -16,8 +25,7 @@
   padding-top: 20px!important;
 }
 body {
-    background: #e4e4e46e!important;
-    height: 900px!important;
+    background-image: url("/images/back.png");
 }
 
 .panel-login {

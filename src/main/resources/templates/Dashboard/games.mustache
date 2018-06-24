@@ -1,25 +1,24 @@
 {{> header}}
   <div class="container">
       <div class="panel panel-primary">
-      <div class="panel-heading">Predicciones</div>
+      <div class="panel-heading">Juegos</div>
       <div class="panel-body">
         <p>Partidos que fueron jugados hasta el momento</p>
       </div>
       <table class="table table-striped text-center">
       <thead>
         <tr>
-          <th class="col-md-6 text-center" scope="col">Nombre</th>
-          <th class="col-md-6 text-center" scope="col">Bandera</th>
+          <th class="col-md-4 text-center" scope="col">Local</th>
+          <th class="col-md-4 text-center" scope="col">Visitante</th>
+          <th class="col-md-4 text-center" scope="col">Fecha</th>
         </tr>
       </thead>
       <tbody>
         {{#games}}
           <tr>
-            <td>{{name}}</td>
-            <td>
-              <img src="images/{{image}}" alt={{image}}>
-            </td>
-
+            <td>{{getTeamLoc}}</td>
+            <td>{{getTeamVis}}</td>
+            <td>{{getDateGame}}</td>
           </tr>
         {{/games}}
       </tbody>
