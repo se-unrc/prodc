@@ -8,4 +8,3 @@ CONSTRAINT cf_id_usuario FOREIGN KEY (id_usuario)
 CONSTRAINT cf_num_fecha FOREIGN KEY (num_fecha)
 	REFERENCES schadules (num_fecha)
 );
-

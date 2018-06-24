@@ -30,12 +30,4 @@ public class UserTest {
       	user.set("username", "");
     	assertEquals(user.isValid(), false);
   	}
-
-  	@Test
-  	public void validatePasswordSize(){
-    	User user = new User();
-    	String pass = user.getPass();
-    	if (pass.size() <= 5) 
-    		assertEquals(user.isValid(), false);
-	}
 }

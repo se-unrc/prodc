@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<title>Registro</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  </head>
+  
+  <body>
+  	<div class="container">
+  		<h1>Registro de nuevo Usuario</h1>
+  		<p>Ingrese los datos requeridos para registrarse.</p>
+	</div>
+
+	<div calss="container">
+		<div class="col-sm-3">
+  			<form method="post" action="/registro">
+  				<div class="form-group">
+  					<label for="user">Nombre de Usuario:</label>
+  					<input type="text" class="form-control" id="user">
+				</div>
+				<div class="form-group">
+  					<label for="pwd">Password:</label>
+  					<input type="password" class="form-control" id="pwd">
+				</div>
+				<a href="/inicio"></a> <button type="submit" class="btn btn-primary">Guardar</button>
+		</div>
+	</div> 
