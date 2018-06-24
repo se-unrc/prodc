@@ -11,7 +11,7 @@ import prode.Prediction;
 
 public class PredictionService {
 
-  //Capturar si existe una excepcion
+  //Crea predicciones para usuarios
  public void createPrediction(int id_user, int fecha,String [] equipos) {
    int i = 0;
    int c = 1;
@@ -28,7 +28,7 @@ public class PredictionService {
    }
  }
 
- //Controla que el usuario no modifique su prediccion
+ //Lista todas las predicciones de un usuario
  public List<Prediction> listPredictions(String id_user){
    List<Prediction> lp = (Prediction.findBySQL("SELECT * FROM predictions WHERE id_user = ?", id_user));
    return lp;

@@ -11,6 +11,7 @@ import prode.User;
 
 public class UserService {
 
+  //Lista todos los usuarios
 	public List<User> getAllUsers() {
     List<User> users;
     users = User.findAll();
@@ -24,27 +25,17 @@ public class UserService {
 	  return user;
 	}
 
-  //Crea un usuario
+  //Crea un usuario - retornar un usuario
 	public User createUser(String name, String password, String email) {
     User user;
 		user = new User(name, email, password);
 		return user;
 	}
 
+  //Verifica si el usuario existe - retorna un usuario
   public User isUser(String name, String password){
     User user = User.findFirst("nick = ? AND password = ?", name, password);
     return user;
   }
-
-	// public User updateUser(String id, String name, String email) {
-	// 	User user = users.get(id);
-	// 	if (user == null) {
-	// 		throw new IllegalArgumentException("No user with id '" + id + "' found");
-	// 	}
-	// 	failIfInvalid(name, email);
-	// 	user.setName(name);
-	// 	user.setEmail(email);
-	// 	return user;
-	// }
 
 }

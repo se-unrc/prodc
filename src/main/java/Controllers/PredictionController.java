@@ -18,6 +18,7 @@ public class PredictionController {
 
 	public PredictionController(final PredictionService predictionService, final GameService gameService ) {
 
+    //Direcciona a la pagina correspondiente
     post("/prediction", (req, res) -> {
 			Map map = new HashMap();
 			String option = req.queryParams("option");
@@ -35,6 +36,7 @@ public class PredictionController {
       return new ModelAndView(map, "./Dashboard/index.mustache");
     }, new MustacheTemplateEngine());
 
+    //Crea una nueva prediccion para un usuario
     post("/prediction/new", (req, res) -> {
 			Map map = new HashMap();
 			String[] games = req.queryParamsValues("partidos[]");
@@ -52,6 +54,7 @@ public class PredictionController {
       return new ModelAndView(map, "./Dashboard/profile.mustache");
     }, new MustacheTemplateEngine());
 
+    //Obtiene todos los equipos y los muestra
     get("/teams", (req, res) -> {
       Map<String, List<Team>> map = new HashMap<>();
       List<Team> lt = gameService.listTeams();
