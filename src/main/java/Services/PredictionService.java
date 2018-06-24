@@ -1,5 +1,7 @@
 package Services;
 
+import java.util.List;
+import java.util.ArrayList;
 import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.LazyList;
 import org.javalite.activejdbc.Model;
@@ -25,4 +27,11 @@ public class PredictionService {
      c++;
    }
  }
+
+ //Controla que el usuario no modifique su prediccion
+ public List<Prediction> listPredictions(String id_user){
+   List<Prediction> lp = (Prediction.findBySQL("SELECT * FROM predictions WHERE id_user = ?", id_user));
+   return lp;
+ }
+
 }

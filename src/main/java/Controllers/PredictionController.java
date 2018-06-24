@@ -16,14 +16,12 @@ import spark.ModelAndView;
 
 public class PredictionController {
 
-
 	public PredictionController(final PredictionService predictionService, final GameService gameService ) {
 
     post("/prediction", (req, res) -> {
 			Map map = new HashMap();
-      String option = req.queryParams("option");
+			String option = req.queryParams("option");
       map.put("nombre",req.session().attribute("USER"));
-			map.put("result",option);
 			switch(option){
 				case "Octavos":
 					return new ModelAndView(map, "./Dashboard/octavos.mustache");
@@ -61,6 +59,9 @@ public class PredictionController {
 			map.put("nombre",req.session().attribute("USER"));
       return new ModelAndView(map, "./Dashboard/teams.mustache");
     }, new MustacheTemplateEngine());
+
+
+
 
   }
 }

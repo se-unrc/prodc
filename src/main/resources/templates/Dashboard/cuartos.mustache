@@ -3,8 +3,11 @@
   <div class="container">
     <form class="" action="/prediction/new" method="post">
       <div class="row">
-        <h5>Juegos</h5>
+        <div class="well well-lg text-center">
+          <strong>Partidos Cuartos</strong>
+        </div>
         <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 1</span>
          <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Equipo</span>
               <input type="text" class="form-control" placeholder="Equipo" name="partidos[]" aria-describedby="sizing-addon3">
@@ -15,6 +18,7 @@
             </div>
         </div>
         <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 2</span>
            <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Equipo</span>
               <input type="text" class="form-control" placeholder="Equipo" name="partidos[]" aria-describedby="sizing-addon3">
@@ -25,6 +29,7 @@
             </div>
         </div>
         <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 3</span>
           <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Equipo</span>
               <input type="text" class="form-control" placeholder="Equipo" name="partidos[]" aria-describedby="sizing-addon3">
@@ -35,6 +40,7 @@
           </div>
           </div>
         <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 4</span>
           <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Equipo</span>
               <input type="text" class="form-control" placeholder="Equipo" name="partidos[]" aria-describedby="sizing-addon3">
@@ -45,8 +51,10 @@
           </div>
           </div>
         </div>
-      <input type="submit" class="btn btn-success" name="registro" value="Registrar">
-      <input type="hidden" name="fecha" value="1">
+        <div class="container text-center">
+            <input type="submit" class="btn btn-success" name="registro" value="Registrar">
+            <input type="hidden" name="fecha" value="1">
+        </div>
     </form>
   </div>
 {{> footer }}

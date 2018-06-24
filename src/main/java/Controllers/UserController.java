@@ -3,7 +3,9 @@ package Controllers;
 import spark.template.mustache.MustacheTemplateEngine;
 import static spark.Spark.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.javalite.activejdbc.Base;
 
@@ -13,10 +15,9 @@ import spark.ModelAndView;
 
 public class UserController {
 
-
 	public UserController(final UserService userService) {
 
-
+	//Validar que el usuario este logueado
   before("/profile/*",(request, response) -> {
     boolean authenticated = request.session().attribute("USER")!= null;
     if (!authenticated) {
@@ -24,6 +25,7 @@ public class UserController {
     }
   });
 
+	//Validar que el usuario este logueado
   before("/users/*",(request, response) -> {
     boolean authenticated = request.session().attribute("USER")!= null;
     if (!authenticated) {
@@ -31,15 +33,7 @@ public class UserController {
     }
   });
 
-
-  get("/prueba", (req, res) -> {
-		Map<String,List<User>> map = new HashMap<>();
-    List<User> lu = userService.getAllUsers();
-		map.put("users",lu);
-    return new ModelAndView(map, "./Dashboard/users.mustache");
-  }, new MustacheTemplateEngine());
-
-
+	//Utilizado para cerrar sesion - borrar sesion
   get("/index", (req, res) -> {
 		Map map = new HashMap();
 		req.session().removeAttribute("USER");
@@ -50,6 +44,7 @@ public class UserController {
   }, new MustacheTemplateEngine());
 
 
+	//Buscar un usuario
   get("/users/:id", (req, res) -> {
 			Map map = new HashMap();
 			String id = req.params(":id");
@@ -61,7 +56,14 @@ public class UserController {
       return new ModelAndView(map, "./Dashboard/index.mustache");
 		}, new MustacheTemplateEngine());
 
-		//Autenticacion
+		//Utilizado para redireccionar desde elementos a
+		get("/profile", (req, res) -> {
+			Map map = new HashMap();
+			map.put("nombre",req.session().attribute("USER"));
+			return new ModelAndView(map, "./Dashboard/profile.mustache");
+		}, new MustacheTemplateEngine());
+
+		//Controla y autentifica al usuario - inicia session variables
     post("/profile", (req, res) -> {
 			Map map = new HashMap();
       String username = req.queryParams("username");
@@ -81,22 +83,18 @@ public class UserController {
       return new ModelAndView(map, "./Dashboard/profile.mustache");
     }, new MustacheTemplateEngine());
 
-		get("/profile", (req, res) -> {
-			Map map = new HashMap();
-			map.put("nombre",req.session().attribute("USER"));
-      return new ModelAndView(map, "./Dashboard/profile.mustache");
-    }, new MustacheTemplateEngine());
 
+		//Creacion de usuarios
+		post("/new/user", (req, res) -> {
+			String username = req.queryParams("username");
+			String pass = req.queryParams("password");
+			String email = req.queryParams("email");
+			User user = userService.createUser(username,pass,email);
+			if(user == null){
+				return new ModelAndView(null, "./404.mustache");
+			}
+			return new ModelAndView(null, "./Dashboard/index.mustache");
+		}, new MustacheTemplateEngine());
 
-    post("/new/user", (req, res) -> {
-      String username = req.queryParams("username");
-      String pass = req.queryParams("password");
-      String email = req.queryParams("email");
-      User user = userService.createUser(username,pass,email);
-      if(user == null){
-        return new ModelAndView(null, "./404.mustache");
-      }
-      return new ModelAndView(null, "./Dashboard/index.mustache");
-    }, new MustacheTemplateEngine());
   }
 }

@@ -19,8 +19,11 @@ public class Prediction extends Model {
     saveIt();
   }
 
-  public int getIdGame(){
+  public int getIdPrediction(){
 	  return ((int) get("id"));
+  }
+  public int getIdGame(){
+	  return ((int) get("id_game"));
   }
   public int getIdUser(){
     return ((int) get("id_user"));
@@ -35,4 +38,5 @@ public class Prediction extends Model {
 	  return ((int) get("fecha"));
   }
 
+ 
 }
