@@ -4,7 +4,6 @@ import java.util.*;
 import org.javalite.activejdbc.Base;
 import static spark.Spark.*;
 import spark.*;
-
 import org.javalite.activejdbc.Model;
 
 public class User extends Model {
@@ -25,7 +24,7 @@ public class User extends Model {
 		String passlog = req.queryParams("password");
 
 		Map resultUser = new HashMap();
-		List<User> busqueda = User.where("user = ?", userlog);
+		List<User> busqueda = User.where("username = ?", userlog);
 		Boolean esta = (busqueda.size() == 0);
 		if (esta){
 			User u = new User();
@@ -43,16 +42,16 @@ public class User extends Model {
     	String userlog = req.queryParams("user");
     	String passlog = req.queryParams("password");
 
-    	Map resultUser =new HashMap();
+    	Map resultUser = new HashMap();
 
-    	List<User> busqueda= User.where("user = ? and password = ?", userlog, passlog);
-    	Boolean esta = (busqueda.size() == 0);
+    	List<User> busqueda = User.where("username = ? and password = ?", userlog, passlog);
+    	Boolean esta = (busqueda.size() != 0);
 
-    	if (!(esta)){
+    	if (esta){
     		resultUser.put("user", busqueda.get(0).get("id"));
     		return resultUser;
     	}
-    	resultUser.put("user", 0);
+    	resultUser.put("user", null);
     	return resultUser;
     }
 }

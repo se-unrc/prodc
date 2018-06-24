@@ -9,7 +9,7 @@ public class Match extends Model {
 
 	}
 	
-/*	public void addMatch(String eLocal, String eVisitante){
+	public void addMatch(String eLocal, String eVisitante){
 		Match m = new Match();
 		cantMatch = cantMatch + 1;
 		m.set("cod_partido", cantMatch);
@@ -18,7 +18,7 @@ public class Match extends Model {
 		m.saveIt();
 	}
 
-	public Match getMatch(int codMatch){
+/*	public Match getMatch(int codMatch){
 		Match m = new Match();
 		m = Match.where("cod_partido = ?", codMatch);
 		return m;

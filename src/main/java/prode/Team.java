@@ -1,6 +1,7 @@
 package prode;
 
-import org.javalite.activejdbc.Model;
+import java.util.*;
+import org.javalite.activejdbc.*;
 
 public class Team extends Model {
 	private int cantTeam = 0;
@@ -9,7 +10,7 @@ public class Team extends Model {
 
 	}
 
-/*	public void addTeam(String nomEquipo){
+	public void addTeam(String nomEquipo){
 		Team t = new Team();
 		cantTeam = cantTeam + 1;
         t.set("cod_equipo", cantTeam);
@@ -17,7 +18,7 @@ public class Team extends Model {
         t.saveIt();
 	}
 
-	public Team getTeam(String nEquipo){
+/*	public Team getTeam(String nEquipo){
 		Team t = new Team();
 		t = Team.where("nom_equipo = ?", nEquipo);
 		return t;

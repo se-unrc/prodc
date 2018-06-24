@@ -21,13 +21,24 @@ public class App{
     	Base.close();
    		});	
 
-		Map logs = new HashMap();
+		Map inicio = new HashMap();
    		get("/inicio", (req, res) -> {
-			return new ModelAndView(logs, "./html/inicio.html");
+			return new ModelAndView(inicio, "./html/inicio.html");
         }, new MustacheTemplateEngine()
     	);
 
-   		// Hacer el login
+    	Map logs = new HashMap();
+   		get("/logs", (req, res) -> {
+   			User userLog = new User();
+   			Map logUser = userLog.getUser(req);
+   			if((Integer)logUser.get("user") != null){
+   				req.session().attribute("user", logUser.get("user"));
+   				return new ModelAndView(logUser, "./html/logs.html");
+   			} else {
+   				return new ModelAndView(logUser, "./html/inicio.html");
+   			}
+   		}, new MustacheTemplateEngine()
+   		);
 
    		Map reg = new HashMap();
     	get("/registro", (req, res) -> {
@@ -44,6 +55,7 @@ public class App{
    		}, new MustacheTemplateEngine()
    		);
 
+   		
 	}
 }
 
