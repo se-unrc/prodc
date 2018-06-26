@@ -32,7 +32,7 @@ public class User extends Model {
         	u.set("password", passlog);
         	u.saveIt();
 		} else {
-			resultUser.put("Error","<div class='alert alert-danger' id='alert-danger'><strong>Error!</strong> Usuario en uso, intente con otro</div>");
+			resultUser.put("Error","Usuario en uso, intente con otro");
 			return resultUser;
 		}
 		return resultUser;

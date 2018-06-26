@@ -8,22 +8,26 @@
   </head>
   
   <body>
-  	<div class="container">
-  		<h1>Registro de nuevo Usuario</h1>
-  		<p>Ingrese los datos requeridos para registrarse.</p>
-	</div>
+  	<div class="jumbotron bg-primary text-white">
+  		<h1 align= "center">Registro de nuevo Usuario</h1>
+  		<p align= "center">Ingrese los datos requeridos para registrarse.</p>
+	 </div>
 
-	<div calss="container">
+	<div calss="container col-sm-3" align="center">
 		<div class="col-sm-3">
   			<form method="post" action="/registro">
   				<div class="form-group">
   					<label for="user">Nombre de Usuario:</label>
   					<input type="text" name="user" class="form-control" id="user">
-				</div>
-				<div class="form-group">
+				  </div>
+				  <div class="form-group">
   					<label for="pwd">Password:</label>
   					<input type="password" name="password" class="form-control" id="pwd">
-				</div>
-				<a href="/inicio"></a> <button type="submit" class="btn btn-primary">Guardar</button>
+				  </div>
+        {{Error}}
+				  <a href="/inicio"></a> <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
 		</div>
-	</div> 
+	 </div> 
+  </body>
+</html>

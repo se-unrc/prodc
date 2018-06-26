@@ -55,7 +55,18 @@ public class App{
    		}, new MustacheTemplateEngine()
    		);
 
-   		
+   		Map pronostico = new HashMap();
+    	get("/pronosticar", (req, res) -> {
+ 			return new ModelAndView(pronostico, "./html/pronosticar.html");
+  		}, new MustacheTemplateEngine()
+   		);
+
+	   	post("/pronosticar", (req, res) -> {
+   			Prediction nPrediccion = new Prediction();
+   			Map nuevaPred = nPrediccion.addPrediction(req);
+   			return new ModelAndView(nuevaPred, "./html/logs.html");
+   		}, new MustacheTemplateEngine()
+   		);   		
 	}
 }
 
