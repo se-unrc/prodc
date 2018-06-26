@@ -28,9 +28,9 @@ public class User extends Model {
 		Boolean esta = (busqueda.size() == 0);
 		if (esta){
 			User u = new User();
-			u.set("username", userlog);
-			u.set("password", passlog);
-			u.saveIt();
+       		u.set("username", userlog);
+        	u.set("password", passlog);
+        	u.saveIt();
 		} else {
 			resultUser.put("Error","<div class='alert alert-danger' id='alert-danger'><strong>Error!</strong> Usuario en uso, intente con otro</div>");
 			return resultUser;
@@ -54,4 +54,6 @@ public class User extends Model {
     	resultUser.put("user", null);
     	return resultUser;
     }
+
+    
 }
