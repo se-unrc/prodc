@@ -30,6 +30,7 @@ public class User extends Model {
 			User u = new User();
        		u.set("username", userlog);
         	u.set("password", passlog);
+        	u.set("superu", false);
         	u.saveIt();
 		} else {
 			resultUser.put("Error","Usuario en uso, intente con otro");
@@ -49,6 +50,7 @@ public class User extends Model {
 
     	if (esta){
     		resultUser.put("user", busqueda.get(0).get("id"));
+    		resultUser.put("superu", busqueda.get(0).get("superu"));
     		return resultUser;
     	}
     	resultUser.put("user", null);

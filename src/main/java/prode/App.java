@@ -32,8 +32,13 @@ public class App{
    			User userLog = new User();
    			Map logUser = userLog.getUser(req);
    			if((Integer)logUser.get("user") != null){
-   				req.session().attribute("user", logUser.get("user"));
-   				return new ModelAndView(logUser, "./html/logs.html");
+   				if ((Boolean)logUser.get("superu") == false){
+   					req.session().attribute("user", logUser.get("user"));
+   					return new ModelAndView(logUser, "./html/logs.html");
+   				} else {
+   					req.session().attribute("user", logUser.get("user"));
+   					return new ModelAndView(logUser, "./html/logsu.html");
+   				}
    			} else {
    				return new ModelAndView(logUser, "./html/inicio.html");
    			}
