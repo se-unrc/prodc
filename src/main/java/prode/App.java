@@ -68,10 +68,23 @@ public class App{
 
 	   	post("/pronosticar", (req, res) -> {
    			Prediction nPrediccion = new Prediction();
-   			Map nuevaPred = nPrediccion.addPrediction(req);
+   			Map nuevaPred = nPrediccion.addPrediction(req); 
    			return new ModelAndView(nuevaPred, "./html/logs.html");
    		}, new MustacheTemplateEngine()
    		);   		
+
+	   	Map agrega = new HashMap();
+	   	get("/agregar", (req, res) -> {
+	   	return new ModelAndView(agrega, "./html/agregarequipo.html");	
+	   	}, new MustacheTemplateEngine()
+	   	);
+
+	   	post("/agregar",(req, res) -> {
+	   		Team nTeam = new Team();
+	   		Map nuevoTeam = nTeam.addTeam(req);
+	   		return new ModelAndView(nuevoTeam, "./html/logsu.html");	   		
+	   	}, new MustacheTemplateEngine()
+	   	);
 	}
 }
 

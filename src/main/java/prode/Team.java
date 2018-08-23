@@ -1,6 +1,8 @@
 package prode;
 
 import java.util.*;
+import static spark.Spark.*;
+import spark.*;
 import org.javalite.activejdbc.*;
 
 public class Team extends Model {
@@ -10,7 +12,7 @@ public class Team extends Model {
 
 	}
 
-	public void addTeam(String nomEquipo){
+	public void Team(String nomEquipo){
 		Team t = new Team();
 		cantTeam = cantTeam + 1;
         t.set("cod_equipo", cantTeam);
@@ -18,15 +20,16 @@ public class Team extends Model {
         t.saveIt();
 	}
 
-/*	public Team getTeam(String nEquipo){
-		Team t = new Team();
-		t = Team.where("nom_equipo = ?", nEquipo);
-		return t;
-	}
+	public Map addTeam(Request req){
+		cantTeam++;
+		String nom = req.queryParams ("nombre");
 
-	public Team getTeam(int cod){
+		Map eq = new HashMap();
 		Team t = new Team();
-		t = Team.where("id = ?", cod);
-		return t;
-	}*/
+		t.set("cod_equipo", cantTeam);
+		t.set("nom_equipo", nom);
+		t.saveIt();
+		eq.put("Guardado","salvado");
+		return eq;
+	}
 }
