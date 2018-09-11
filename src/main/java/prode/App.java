@@ -85,7 +85,20 @@ public class App{
 	   		return new ModelAndView(nuevoTeam, "./html/logsu.html");	   		
 	   	}, new MustacheTemplateEngine()
 	   	);
-	}
+
+	   	Map carga = new HashMap();
+	   	get("/cargar",(req, res) -> {
+	   		return new ModelAndView (carga, "./html/cargar.html");
+		},	new MustacheTemplateEngine()
+		);
+
+	   	post("/cargar",(req, res) -> {
+	   		Match nMatch = new Match();
+	   		Map nuevoMatch = nMatch.addMatch(req);
+	   		return new ModelAndView(nuevoMatch, "./html/logsu.html"); 
+	   	}, new MustacheTemplateEngine()
+	   	);
+	}   	
 }
 
 /*      

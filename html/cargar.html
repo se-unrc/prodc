@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  	<title>CargarPartido</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  </head>
+
+  <body>
+  	<div class="jumbotron bg-primary text-white">
+  		<h1 align= "center">Cargar Partido</h1>
+  		</div>
+  	</div>
+  	<div class="container col-sm-3">
+  	<form method = "post" action="/cargar">
+  			<div>
+  			<select name="local">
+   			<option selected value=""> Elige el equipo local</option>
+   			</select>
+   			</div>
+   			<br>
+   			<div>
+   			<select name="visitante">
+   			<option selected value="0"> Elige el equipo visitante </option>
+   			</div>
+   			</select>
+   			<br>	
+  		<a href="/logsu"></a> <button type="submit" class="btn btn-primary mb-6">Guardar</button>
+  	</form>
+  	</div>	
+ </body>
+</html>			

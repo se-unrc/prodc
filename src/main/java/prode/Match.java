@@ -1,6 +1,9 @@
 package prode;
 
-import org.javalite.activejdbc.Model;
+import java.util.*;
+import static spark.Spark.*;
+import spark.*;
+import org.javalite.activejdbc.*;
 
 public class Match extends Model {
 	private int cantMatch = 0;
@@ -18,9 +21,17 @@ public class Match extends Model {
 		m.saveIt();
 	}
 
-/*	public Match getMatch(int codMatch){
+	public Map addMatch(Request req){
+		cantMatch++;
+		String elocal = req.queryParams ("local");
+		String evisitante = req.queryParams ("visitante");
+		Map game = new HashMap();
 		Match m = new Match();
-		m = Match.where("cod_partido = ?", codMatch);
-		return m;
-	}*/
+		m.set("cod_partido", cantMatch);
+		m.set("equipo_local", elocal);
+		m.set("equipo_visitante", evisitante);
+		m.saveIt();
+		return game;
+	}
 }
+

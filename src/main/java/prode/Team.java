@@ -1,12 +1,12 @@
 package prode;
 
 import java.util.*;
+import org.javalite.activejdbc.Base;
 import static spark.Spark.*;
 import spark.*;
-import org.javalite.activejdbc.*;
+import org.javalite.activejdbc.Model;
 
 public class Team extends Model {
-	private int cantTeam = 0;
 
 	public Team(){
 
@@ -14,22 +14,24 @@ public class Team extends Model {
 
 	public void Team(String nomEquipo){
 		Team t = new Team();
-		cantTeam = cantTeam + 1;
-        t.set("cod_equipo", cantTeam);
         t.set("nom_equipo", nomEquipo);
         t.saveIt();
 	}
 
 	public Map addTeam(Request req){
-		cantTeam++;
+		
 		String nom = req.queryParams ("nombre");
 
 		Map eq = new HashMap();
-		Team t = new Team();
-		t.set("cod_equipo", cantTeam);
-		t.set("nom_equipo", nom);
-		t.saveIt();
-		eq.put("Guardado","salvado");
+		List<Team> busqueda = Team.where("nom_equipo = ?", nom);
+		Boolean esta = (busqueda.size() == 0);
+		if (esta) {
+			Team t = new Team();
+			t.set("nom_equipo", nom);
+			t.saveIt();
+		return eq;
+		}
+		eq.put("Error","Equipo ya cargado");
 		return eq;
 	}
 }
