@@ -86,9 +86,12 @@ public class App{
 	   	}, new MustacheTemplateEngine()
 	   	);
 
-	   	Map carga = new HashMap();
+	   
 	   	get("/cargar",(req, res) -> {
-	   		return new ModelAndView (carga, "./html/cargar.html");
+	   		Map nuevosteams = new HashMap();
+	   		Team teams = new Team();
+	   		nuevosteams = teams.getTeams();
+	   		return new ModelAndView (nuevosteams, "./html/cargar.html");
 		},	new MustacheTemplateEngine()
 		);
 
@@ -98,37 +101,7 @@ public class App{
 	   		return new ModelAndView(nuevoMatch, "./html/logsu.html"); 
 	   	}, new MustacheTemplateEngine()
 	   	);
+	 
 	}   	
 }
 
-/*      
-		Map users = new HashMap();
-	   	List<User> allUsers = User.findAll();
-	    //int i = 0;
-	    for(User u:allUsers){
-			users.put("user", u);		    	
-	    }
-
-		users.put("usersList", allUsers);
-		users.put("title", "User List");
-	    return new ModelAndView(users, "./views/users/index.mustache");
-
-----
-
-
-		User u = new User();
-        u.set("username", "pepito1");
-        u.set("password", "pepito");
-        u.saveIt();
-
-	    Map map = new HashMap();
-	    map.put("name", "Sam");
-	    map.put("value", 1000);
-	    map.put("taxed_value", 1000 - (1000 * 0.4));
-	    map.put("in_ca", true);
-
-	    get("/hello", (req, res) -> {
-	        return new ModelAndView(map, "./views/hello.mustache");
-	    }, new MustacheTemplateEngine()
-	    );
-*/

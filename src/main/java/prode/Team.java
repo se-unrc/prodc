@@ -34,4 +34,24 @@ public class Team extends Model {
 		eq.put("Error","Equipo ya cargado");
 		return eq;
 	}
+	
+    public Map getTeams(){
+    	//List<Team> busqueda  = Team.findBySQL("select cod_equipo, nom_equipo from teams ");
+    	List<Team> busqueda = null;
+    	Map resultTeams = new HashMap();
+    	
+    	for (int i = 1; i < 5; i++) {
+    		busqueda = Team.where("cod_equipo = ?", i);		
+    	}
+    	resultTeams.put("equipos", busqueda);
+    	if (resultTeams != null) 	
+    		return resultTeams;
+    	else
+    		resultTeams.put("error","No hay equipos cargados");
+    		return resultTeams;
+    	// Map map = new HashMap();
+    	// map.put("teams",busqueda);
+    	// return map;
+
+    }
 }
