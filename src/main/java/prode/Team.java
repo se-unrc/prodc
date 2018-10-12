@@ -37,8 +37,11 @@ public class Team extends Model {
 	
     public Map getTeams(){
     	Map resultTeams = new HashMap();
-    	List<Team> busqueda  = Team.findBySQL("select cod_equipo, nom_equipo from teams ");   
-    	resultTeams.put("equipos", busqueda);
+    	//List<Team> busqueda  = Team.findBySQL("select cod_equipo, nom_equipo from teams ");
+    	List<Team> busqueda  = Team.where("cod_equipo = ?", 1);
+    	Team t = busqueda.get(0);
+    	Object a = t.get("nom_equipo");
+    	resultTeams.put("equipos", a);
     	if (resultTeams != null) 	
     		return resultTeams;
     	else
