@@ -8,11 +8,6 @@
   </head>
 
   <body>
-  	{{#equipos}}
-        <li>{{equipos}}</li>
-  	{{/equipos}}
-  	
-    
     <div class="jumbotron bg-primary text-white">
   		<h1 align= "center">Cargar Partido</h1>
   		</div>
@@ -21,7 +16,11 @@
   	<form method = "post" action="/cargar">
   			<div>
   			<select name="local">
-   			<option selected value=""> Elige el equipo local</option>
+   			<option selected value=""> Elige el equipo local
+   			 {{#equipos}}
+        		{{equipos}}
+  			 {{/equipos}}
+  			 </option>
    			</select>
    			</div>
    			<br>
