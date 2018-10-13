@@ -16,15 +16,21 @@
   	<form method = "post" action="/cargar">
   			<div>
   			<select name="local">
-   			<option selected value=""> Elige el equipo local </option>
-   			<option value="1"> {{#equipos}} {{equipos}} {{/equipos}} </option>
+   				<option selected value=""> Elige el equipo local </option>
+   				<option value="1"> {{#.}} {{0}} {{/.}} </option>
+   				<option value="2"> {{#.}} {{1}} {{/.}} </option>
+   				<option value="3"> {{#.}} {{2}} {{/.}} </option>
+   				<option value="4"> {{#.}} {{3}} {{/.}} </option>
    			</select>
    			</div>
    			<br>
    			<div>
    			<select name="visitante">
-   			<option selected value=""> Elige el equipo visitante </option>
-   			<option value="1"> {{#equipos}} {{equipos}} {{/equipos}} </option>
+   				<option selected value=""> Elige el equipo visitante </option>
+   				<option value="1"> {{#.}} {{0}} {{/.}} </option>
+   				<option value="2"> {{#.}} {{1}} {{/.}} </option>
+   				<option value="3"> {{#.}} {{2}} {{/.}} </option>
+   				<option value="4"> {{#.}} {{3}} {{/.}} </option>
    			</div>
    			</select>
    			<br>	
