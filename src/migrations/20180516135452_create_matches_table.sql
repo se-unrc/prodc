@@ -1,5 +1,5 @@
 CREATE TABLE matches (
-	cod_partido int,
+	cod_partido int auto_increment,
 	equipo_local int,
 	equipo_visitante int,
 CONSTRAINT cp_cod_partido PRIMARY KEY (cod_partido),

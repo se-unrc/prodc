@@ -41,7 +41,8 @@ public class Team extends Model {
     	Map resultTeams = new HashMap();
     	List<Team> busqueda  = Team.findBySQL("select cod_equipo, nom_equipo from teams ");
     	Integer i = 0;
-    	while (i < 4) {
+    	Integer k = busqueda.size();
+    	while (i < k) {
     		Team t = busqueda.get(i);
     		Object a = t.get("nom_equipo");
     		String j = i.toString();
@@ -49,13 +50,12 @@ public class Team extends Model {
     		i++;
     	}	
     	if (resultTeams != null) {
-    		System.out.println(resultTeams.get(0));
     		return resultTeams;
     	}	
-    	else
+    	else {
     		resultTeams.put("error","No hay equipos cargados");
     		return resultTeams;
-    
+    	}
 
     }
 }

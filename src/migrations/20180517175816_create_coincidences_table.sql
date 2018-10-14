@@ -1,5 +1,5 @@
 CREATE TABLE coincidences (
-	num_boleta int,
+	num_boleta int auto_increment,
 	num_fecha int,
 	puntos int,
 CONSTRAINT cp_coinciden PRIMARY KEY (num_boleta, num_fecha),
