@@ -15,12 +15,27 @@
 	</div>
 	<div class="container col-sm-3">
 		<form method = "post" action="/pronosticar">
+      <div>
+        <select name="local">
+          <option selected value=""> Elige el equipo local </option>
+          <option value="1"> {{#.}} {{0}} {{/.}} </option>
+          <option value="2"> {{#.}} {{1}} {{/.}} </option>
+          <option value="3"> {{#.}} {{2}} {{/.}} </option>
+          <option value="4"> {{#.}} {{3}} {{/.}} </option>
+        </select>
+      </div>
 			<div class="form-group">
-  				<label for="elocal">River:</label>
   				<input type="text" name="elocal" class="form-control" id="elocal">
 			</div>
+      <div>
+        <select name="visitante">
+          <option selected value=""> Elige el equipo visitante </option>
+          <option value="1"> {{#.}} {{0}} {{/.}} </option>
+          <option value="2"> {{#.}} {{1}} {{/.}} </option>
+          <option value="3"> {{#.}} {{2}} {{/.}} </option>
+          <option value="4"> {{#.}} {{3}} {{/.}} </option>
+      </div>
 			<div class="form-group">
-  				<label for="evisit">Boca:</label>
   				<input type="text" name="evisit" class="form-control" id="evisit">
 			</div>
   			<a href="/logs"></a> <button type="submit" class="btn btn-primary mb-6">Guardar</button>

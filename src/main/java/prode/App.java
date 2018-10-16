@@ -60,9 +60,11 @@ public class App{
    		}, new MustacheTemplateEngine()
    		);
 
-   		Map pronostico = new HashMap();
-    	get("/pronosticar", (req, res) -> {
- 			return new ModelAndView(pronostico, "./html/pronosticar.html");
+      get("/pronosticar", (req, res) -> {
+        Map pronostico = new HashMap();
+        Team pronTeams = new Team();
+        pronostico = pronTeams.getTeams();
+ 			  return new ModelAndView(pronostico, "./html/pronosticar.html");
   		}, new MustacheTemplateEngine()
    		);
 
