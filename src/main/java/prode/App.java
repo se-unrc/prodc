@@ -98,8 +98,12 @@ public class App{
 	   	post("/cargar",(req, res) -> {
 	   		Match nMatch = new Match();
 	   		Map nuevoMatch = nMatch.addMatch(req);
+	   		Schadule nSchadule = new Schadule();
+	   		ArrayList<String> aux = new ArrayList<String>();
+	   		aux = nMatch.getCode();
+	   		nSchadule.addSchadule(aux);
 	   		return new ModelAndView(nuevoMatch, "./html/logsu.html"); 
-	   	}, new MustacheTemplateEngine()
+    	}, new MustacheTemplateEngine()
 	   	);
 	 
 	}   	

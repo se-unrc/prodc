@@ -10,15 +10,7 @@ import org.javalite.activejdbc.Model;
 
 public class Team extends Model {
 
-	public Team(){
-
-	}
-
-	public void Team(String nomEquipo){
-		Team t = new Team();
-        t.set("nom_equipo", nomEquipo);
-        t.saveIt();
-	}
+	public Team(){ }
 
 	public Map addTeam(Request req){
 		

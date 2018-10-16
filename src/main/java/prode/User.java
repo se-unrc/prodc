@@ -8,16 +8,7 @@ import org.javalite.activejdbc.Model;
 
 public class User extends Model {
 
-	public User(){
-
-	}
-
-	public User(String user, String pass){
-		User u = new User();
-        u.set("username", user);
-        u.set("password", pass);
-        u.saveIt();
-	}
+	public User(){	}
 
 	public Map addUser(Request req){
 		String userlog = req.queryParams("user");

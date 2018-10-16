@@ -7,9 +7,7 @@ import org.javalite.activejdbc.*;
 
 public class Match extends Model {
 	
-	public Match(){
-
-	}
+	public Match(){ }
 
 	public Map addMatch(Request req){
 		String elocal = req.queryParams ("local");
@@ -24,7 +22,7 @@ public class Match extends Model {
 	
 	public Map getMatch() {
 		Map resMatch = new HashMap();
-		List<Match> busqueda  = Match.findBySQL("select cod_partido, from matches ");
+		List<Match> busqueda  = Match.findBySQL("select cod_partido from matches ");
     	Integer i = 0;
     	Integer k = busqueda.size();
     	while (i < k) {
@@ -42,6 +40,19 @@ public class Match extends Model {
     		resMatch.put("error","No hay partidos cargados");
     		return resMatch;
     	}
+    	
 	}
+	
+	public ArrayList<String> getCode() {	
+    	ArrayList<String> code = new ArrayList<String>();
+    	List<Match> busqueda  = Match.findBySQL("select cod_partido from matches where cod_partido not in (select cod_partido from schadules) ");
+    	for (int i = 0; i < busqueda.size(); i++) {
+    		Match t = busqueda.get(i);
+    		Object a = t.get("cod_partido");
+    		String j = a.toString();
+    		code.add(j);
+    	}
+    	return code;
+    }
 }
 
