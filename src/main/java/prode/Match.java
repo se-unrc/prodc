@@ -54,5 +54,10 @@ public class Match extends Model {
     	}
     	return code;
     }
+
+    public List<Match> getMatchList() {
+        List<Match> busqueda  = Match.findBySQL("select * from matches ");
+        return busqueda;       
+    }
 }
 
