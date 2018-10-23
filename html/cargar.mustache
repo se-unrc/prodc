@@ -14,30 +14,13 @@
   	</div>
   	<div class="container col-sm-3">
   	<form method = "post" action="/cargar">
+  			<br>
   			<div>
-  			 <br>
-  			 <h2>probad</h2>
-  			{{#equipos}}
-  			<div class="pru">
-   				<p><span class="name">{{cod_equipo}}</p>
-   			</div>
-   			{{/equipos}}
-  			
-  			<br>
-  			 <br>
-  			 <h2>probad</h2>
-  			{{#equipos}}
-  			<div class="pru">
-   				<p><span class="name">{{nom_equipo}}<span/></p>
-   			</div>
-   			{{/equipos}}
-  			
-  			<br>
   			<h1 align= "center">Partido 1</h1>
   			<select name="local">
    				<option selected value=""> Elige el equipo local </option>
 				{{#equipos}}
-   					<option value="cod_equipo"> {{{nom_equipo}}}  </option>
+   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
    				{{/equipos}}
    				</option>
    			</select>
@@ -46,10 +29,9 @@
    			<div>
    			<select name="visitante">
    				<option selected value=""> Elige el equipo visitante </option>
-   				<option value="1"> {{#.}} {{0}} {{/.}} </option>
-   				<option value="2"> {{#.}} {{1}} {{/.}} </option>
-   				<option value="3"> {{#.}} {{2}} {{/.}} </option>
-   				<option value="4"> {{#.}} {{3}} {{/.}} </option>
+   				{{#equipos}}
+   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   				{{/equipos}}
    			</div>
    			</select>
    			<br>
@@ -58,20 +40,18 @@
   			<br>
   			<select name="local">
    				<option selected value=""> Elige el equipo local </option>
-   				<option value="1"> {{#.}} {{0}} {{/.}} </option>
-   				<option value="2"> {{#.}} {{1}} {{/.}} </option>
-   				<option value="3"> {{#.}} {{2}} {{/.}} </option>
-   				<option value="4"> {{#.}} {{3}} {{/.}} </option>
+   				{{#equipos}}
+   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   				{{/equipos}}
    			</select>
    			</div>
    			<br>
    			<div>
    			<select name="visitante">
    				<option selected value=""> Elige el equipo visitante </option>
-   				<option value="1"> {{#.}} {{0}} {{/.}} </option>
-   				<option value="2"> {{#.}} {{1}} {{/.}} </option>
-   				<option value="3"> {{#.}} {{2}} {{/.}} </option>
-   				<option value="4"> {{#.}} {{3}} {{/.}} </option>
+   				{{#equipos}}
+   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   				{{/equipos}}
    			</div>
    			</select>
    			<br>
@@ -80,20 +60,18 @@
    			<div>
   			<select name="local">
    				<option selected value=""> Elige el equipo local </option>
-   				<option value="1"> {{#.}} {{0}} {{/.}} </option>
-   				<option value="2"> {{#.}} {{1}} {{/.}} </option>
-   				<option value="3"> {{#.}} {{2}} {{/.}} </option>
-   				<option value="4"> {{#.}} {{3}} {{/.}} </option>
+   				{{#equipos}}
+   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   				{{/equipos}}
    			</select>
    			</div>
    			<br>
    			<div>
    			<select name="visitante">
    				<option selected value=""> Elige el equipo visitante </option>
-   				<option value="1"> {{#.}} {{0}} {{/.}} </option>
-   				<option value="2"> {{#.}} {{1}} {{/.}} </option>
-   				<option value="3"> {{#.}} {{2}} {{/.}} </option>
-   				<option value="4"> {{#.}} {{3}} {{/.}} </option>
+   				{{#equipos}}
+   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   				{{/equipos}}
    			</div>
    			</select>
    			<div>
@@ -102,20 +80,18 @@
    			<br>	
   			<select name="local">
    				<option selected value=""> Elige el equipo local </option>
-   				<option value="1"> {{#.}} {{0}} {{/.}} </option>
-   				<option value="2"> {{#.}} {{1}} {{/.}} </option>
-   				<option value="3"> {{#.}} {{2}} {{/.}} </option>
-   				<option value="4"> {{#.}} {{3}} {{/.}} </option>
+   				{{#equipos}}
+   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   				{{/equipos}}
    			</select>
    			</div>
    			<br>
    			<div>
    			<select name="visitante">
    				<option selected value=""> Elige el equipo visitante </option>
-   				<option value="1"> {{#.}} {{0}} {{/.}} </option>
-   				<option value="2"> {{#.}} {{1}} {{/.}} </option>
-   				<option value="3"> {{#.}} {{2}} {{/.}} </option>
-   				<option value="4"> {{#.}} {{3}} {{/.}} </option>
+   				{{#equipos}}
+   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   				{{/equipos}}
    			</div>
    			</select>
    			<br>		

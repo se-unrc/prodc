@@ -16,7 +16,7 @@ public class Schadule extends Model {
 	public void addSchadule(ArrayList<String> req){
 		List<Schadule> busqueda = Schadule.findBySQL("select num_fecha from schadules ");
 		Integer cantFecha = 0;
-		if (busqueda.size() != 1) {
+		if (busqueda.size() != 0) {
 			Schadule actualFecha = busqueda.get(busqueda.size()-1);
 			cantFecha = (Integer)actualFecha.get("num_fecha");
 		}
