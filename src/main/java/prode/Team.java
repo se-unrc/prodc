@@ -29,10 +29,21 @@ public class Team extends Model {
 		return eq;
 	}
 	
-    public Map getTeams(){
-    	Map resultTeams = new HashMap();
+    public List<Team> getTeams(){
+    	
     	List<Team> busqueda  = Team.findBySQL("select cod_equipo, nom_equipo from teams ");
-    	Integer i = 0;
+    	return busqueda;
+    } 
+    
+    public int cod_equipo() {
+    	return this.getInteger("cod_equipo");//IMPORTANTE
+    }
+    
+    public String nom_equipo() {
+    	return this.getString("nom_equipo");
+    }
+    	
+    	/*Integer i = 0;
     	Integer k = busqueda.size();
     	while (i < k) {
     		Team t = busqueda.get(i);
@@ -47,7 +58,8 @@ public class Team extends Model {
     	else {
     		resultTeams.put("error","No hay equipos cargados");
     		return resultTeams;
-    	}
 
-    }
+
+    	 */
+     
 }

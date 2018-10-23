@@ -60,7 +60,7 @@ public class App{
    		}, new MustacheTemplateEngine()
    		);
 
-      get("/pronosticar", (req, res) -> {
+     /* get("/pronosticar", (req, res) -> {
         Map pronostico = new HashMap();
         Team pronTeams = new Team();
         pronostico = pronTeams.getTeams();
@@ -73,7 +73,7 @@ public class App{
    			Map nuevaPred = nPrediccion.addPrediction(req); 
    			return new ModelAndView(nuevaPred, "./html/logs.html");
    		}, new MustacheTemplateEngine()
-   		);   		
+   		); */  		
 
 	   	Map agrega = new HashMap();
 	   	get("/agregar", (req, res) -> {
@@ -92,8 +92,11 @@ public class App{
 	   	get("/cargar",(req, res) -> {
 	   		Map nuevosteams = new HashMap();
 	   		Team teams = new Team();
-	   		nuevosteams = teams.getTeams();
-	   		return new ModelAndView (nuevosteams, "./html/cargar.html");
+	   		List<Team> teamsList = teams.getTeams(); 
+	   		//Team t = teamsList.get(0);
+	   		//System.out.println(t.toString());
+	   		nuevosteams.put("equipos", teamsList);
+	   		return new ModelAndView (nuevosteams, "./html/cargar.mustache");
 		},	new MustacheTemplateEngine()
 		);
 
