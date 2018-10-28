@@ -32,10 +32,8 @@ public class Match extends Model {
     		resMatch.put(j, a);
     		i++;
     	}	
-		
-    	if (resMatch != null) {
-    		return resMatch;
-    	}	
+    	if (resMatch != null) 
+    		return resMatch;	
     	else {
     		resMatch.put("error","No hay partidos cargados");
     		return resMatch;
