@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<title>Pronosticos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  </head>
+
+  <body>
+  	<div class="jumbotron bg-primary text-white">
+  			<h1 align= "center">Pronosticar Resultado</h1>
+  			<p align= "center">Ingrese los resultados para los partidos a pronosticar</p>
+  		</div>
+	</div>
+	<div class="container col-sm-3">
+		<form method = "post" action="/pronosticar">
+      		<div>
+        	<select name="fecha">
+        		<option selected value=""> Elige la fecha </option>
+        		{{#Fechas}}
+          		<option value="{{num_fecha}}">{{num_fecha}}</option>
+				{{/Fechas}} 
+				
+				<input type="text" name="fecha" id="fecha">       	
+        	</select>
+      		</div>
+        	<a href="/logs"></a> <button type="submit" class="btn btn-primary mb-6">Guardar</button>
+		</form> 
+	</div>
+  </body>
+</html>
