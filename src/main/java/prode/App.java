@@ -17,6 +17,12 @@ public class App{
 	 static final MetricRegistry metrics = new MetricRegistry();
     
     public static void main( String[] args ){
+    	/*
+    	startReport();
+        Meter requests = metrics.meter("requests");
+        requests.mark();
+        wait5Seconds();
+        */
     	/**
     	 * Apertura de la base de datos
     	 */
@@ -33,14 +39,12 @@ public class App{
 		 */
 		Map inicio = new HashMap();
    		get("/inicio", (req, res) -> {
+   			User v = new User();
+   	    	v.addSuperUser();
 			return new ModelAndView(inicio, "./html/inicio.html");
         }, new MustacheTemplateEngine()
     	);
    		
-   		startReport();
-        Meter requests = metrics.meter("requests");
-        requests.mark();
-        wait5Seconds();
 
    		/**
 		 * Carga de la pagina de de logueo

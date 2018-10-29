@@ -10,6 +10,19 @@ public class User extends Model {
 
 	public User(){	}
 	
+	public void addSuperUser() {
+		List<User> busqueda;
+		if ((busqueda = User.where("superu = ?", true)).size() == 0 ) {
+			String userlog = "superusuario";
+			String passlog = "superusuario";
+			User u = new User();
+			u.set("username", userlog);
+			u.set("password", passlog);
+			u.set("superu", true);
+			u.saveIt();
+		}	
+	}
+	
 	public boolean checkUser(Request req) {
 		String userlog = req.queryParams("user");
 		String passlog = req.queryParams("password");

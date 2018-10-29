@@ -9,14 +9,32 @@ public class Match extends Model {
 	
 	public Match(){ }
 
-	public Map addMatch(Request req){
-		String elocal = req.queryParams ("local");
-		String evisitante = req.queryParams ("visitante");
+	public Map addMatchs(Request req){
+		String elocal1 = req.queryParams ("local1");
+		String evisitante1 = req.queryParams ("visitante1");
+		String elocal2 = req.queryParams ("local2");
+		String evisitante2 = req.queryParams ("visitante2");
+		String elocal3 = req.queryParams ("local3");
+		String evisitante3 = req.queryParams ("visitante3");
+		String elocal4 = req.queryParams ("local4");
+		String evisitante4 = req.queryParams ("visitante4");
 		Map game = new HashMap();
 		Match m = new Match();
-		m.set("equipo_local", elocal);
-		m.set("equipo_visitante", evisitante);
+		m.set("equipo_local", elocal1);
+		m.set("equipo_visitante", evisitante1);
 		m.saveIt();
+		Match p = new Match();
+		p.set("equipo_local", elocal2);
+		p.set("equipo_visitante", evisitante2);
+		p.saveIt();
+		Match o = new Match();
+		o.set("equipo_local", elocal3);
+		o.set("equipo_visitante", evisitante3);
+		o.saveIt();
+		Match n = new Match();
+		n.set("equipo_local", elocal4);
+		n.set("equipo_visitante", evisitante4);
+		n.saveIt();	
 		return game;
 	}
 	

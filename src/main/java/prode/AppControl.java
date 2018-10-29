@@ -61,7 +61,7 @@ public class AppControl {
 	
 	public static ModelAndView armarFecha(Request req, Response res) {
 		Match nMatch = new Match();
-		Map nuevoMatch = nMatch.addMatch(req);
+		Map nuevoMatch = nMatch.addMatchs(req);
 		Schadule nSchadule = new Schadule();
 		ArrayList<String> aux = new ArrayList<String>();
 		aux = nMatch.getCode();
