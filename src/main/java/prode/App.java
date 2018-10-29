@@ -3,9 +3,9 @@ package prode;
 import java.util.*;
 import com.codahale.metrics.*;
 import java.util.concurrent.TimeUnit;
-import org.javalite.activejdbc.Base;
-import static spark.Spark.*;	
 import prode.User;
+import org.javalite.activejdbc.Base;
+import static spark.Spark.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -14,14 +14,19 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 public class App{
 	
-	 static final MetricRegistry metrics = new MetricRegistry();
+	static final MetricRegistry metrics = new MetricRegistry();
+	private final static  Meter requests = metrics.meter("requests");
+	//private final Histogram responseSizes = metrics.histogram(name(RequestHandler.class, "response-sizes"));
     
-    public static void main( String[] args ){
-    	/*
-    	startReport();
-        Meter requests = metrics.meter("requests");
-        requests.mark();
-        wait5Seconds();
+    public static void main( String[] args ) throws InterruptedException{ 
+    	
+    	
+        /*
+        ConsoleReporter.forRegistry(metrics) 
+    		     .convertRatesTo(TimeUnit.SECONDS) 
+    		     .convertDurationsTo(TimeUnit.MILLISECONDS) 
+    		     .build() 
+    		     .start(1, TimeUnit.SECONDS); 
         */
     	/**
     	 * Apertura de la base de datos
@@ -39,6 +44,7 @@ public class App{
 		 */
 		Map inicio = new HashMap();
    		get("/inicio", (req, res) -> {
+   		    requests.mark();
    			User v = new User();
    	    	v.addSuperUser();
 			return new ModelAndView(inicio, "./html/inicio.html");
@@ -57,6 +63,7 @@ public class App{
 		 */
    		Map reg = new HashMap();
     	get("/registro", (req, res) -> {
+    	    requests.mark();
  		return new ModelAndView(reg, "./html/registro.html");
   		}, new MustacheTemplateEngine()
    		);
@@ -71,6 +78,7 @@ public class App{
 		 */
 	   	Map agrega = new HashMap();
 	   	get("/agregar", (req, res) -> {
+    	    requests.mark();
 	   	return new ModelAndView(agrega, "./html/agregarequipo.html");	
 	   	}, new MustacheTemplateEngine()
 	   	);
@@ -85,10 +93,19 @@ public class App{
 	   	post("/cargar",AppControl::armarFecha, new MustacheTemplateEngine());
 	 
 	   	
+	   	metrics.name(Queue.class, "requests", "size");
+    	System.out.println(metrics.toString());
+    	
+    	startReport();
+        Meter requests = metrics.meter("requests");
+        requests.mark();
+        wait5Seconds();
 	   	
 	   	
 	   	
-	   	
+    
+    	
+    	
 	   	
 	   	
 	   	Map pronostico = new HashMap();
