@@ -16,18 +16,10 @@ public class App{
 	
 	static final MetricRegistry metrics = new MetricRegistry();
 	private final static  Meter requests = metrics.meter("requests");
-	//private final Histogram responseSizes = metrics.histogram(name(RequestHandler.class, "response-sizes"));
-    
+	
     public static void main( String[] args ) throws InterruptedException{ 
     	
-    	
-        /*
-        ConsoleReporter.forRegistry(metrics) 
-    		     .convertRatesTo(TimeUnit.SECONDS) 
-    		     .convertDurationsTo(TimeUnit.MILLISECONDS) 
-    		     .build() 
-    		     .start(1, TimeUnit.SECONDS); 
-        */
+    
     	/**
     	 * Apertura de la base de datos
     	 */
