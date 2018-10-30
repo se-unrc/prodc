@@ -10,10 +10,12 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 public class AppControl { 
 	
+	private static int idUser;
+	
 	public static ModelAndView registro(Request req, Response res) {
 		User nUsuario = new User();
 		Map nuevoUser = new HashMap();
-		if (nUsuario.checkUser(req)) {
+		if (nUsuario.checkUser(req) == false) {
 			nUsuario.addUser(req);
 			return new ModelAndView(nuevoUser, "./html/inicio.html");
 		} else {
@@ -28,6 +30,7 @@ public class AppControl {
 		Map logUser = new HashMap(); 
 		if (userLog.checkUser(req)) {
 			logUser	= userLog.getUser(req);
+			idUser = (int) logUser.get("user");
 			if ((Boolean)logUser.get("superu") == false){
 				req.session().attribute("user", logUser.get("user"));
 				return new ModelAndView(logUser, "./html/logs.html");
@@ -105,7 +108,7 @@ public class AppControl {
 
 	public static ModelAndView guardarPronFecha(Request req, Response res){
 		Prediction nPrediccion = new Prediction();
-   		Map nuevaPred = nPrediccion.addPrediction(req); 
+   		Map nuevaPred = nPrediccion.addPrediction(req, idUser); 
    		return new ModelAndView(nuevaPred, "./html/logs.html");
 	}
 }

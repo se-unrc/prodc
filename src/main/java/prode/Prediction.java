@@ -9,7 +9,7 @@ public class Prediction extends Model {
 
 	public Prediction(){}
 
-	public Map addPrediction(Request req){
+	public Map addPrediction(Request req, int idUser){
 	
 		String golloc = (String) req.queryParams("elocal1");
 		String golvis = (String) req.queryParams("evisit1");
@@ -21,7 +21,7 @@ public class Prediction extends Model {
 		Prediction p = new Prediction();
 		p.set("equipoL", golLocal);
 		p.set("equipoV", golVisit);
-		p.set("id_usuario", User.iuser);
+		p.set("id_usuario", idUser);
 		p.saveIt();
 
 
@@ -34,6 +34,7 @@ public class Prediction extends Model {
 		Prediction q = new Prediction();
 		q.set("equipoL", golLocal);
 		q.set("equipoV", golVisit);
+		q.set("id_usuario", idUser);
 		q.saveIt();
 
 
@@ -46,6 +47,7 @@ public class Prediction extends Model {
 		Prediction r = new Prediction();
 		r.set("equipoL", golLocal);
 		r.set("equipoV", golVisit);
+		r.set("id_usuario", idUser);
 		r.saveIt();
 
 
@@ -58,6 +60,7 @@ public class Prediction extends Model {
 		Prediction s = new Prediction();
 		s.set("equipoL", golLocal);
 		s.set("equipoV", golVisit);
+		s.set("id_usuario", idUser);
 		s.saveIt();
 
 

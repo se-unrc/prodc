@@ -8,8 +8,7 @@ import org.javalite.activejdbc.Model;
 
 public class User extends Model {
 
-public static int iuser;	
-	
+
 	public User(){	}
 	
 	public void addSuperUser() {
@@ -51,7 +50,6 @@ public static int iuser;
     	Map resultUser = new HashMap();
     	List<User> busqueda = User.where("username = ? and password = ?", userlog, passlog);
     	resultUser.put("user", busqueda.get(0).get("id"));
-    	iuser = (int)busqueda.get(0).get("id");
     	resultUser.put("superu", busqueda.get(0).get("superu"));
     	return resultUser;
     }
