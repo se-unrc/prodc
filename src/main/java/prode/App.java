@@ -91,14 +91,8 @@ public class App{
     	startReport();
         Meter requests = metrics.meter("requests");
         requests.mark();
-        wait5Seconds();
-	   	
-	   	
-	   	
-    
-    	
-    	
-	   	
+        wait5Seconds();    	
+	   
 	   	get("/pronosticar", AppControl::seleccionFecha, new MustacheTemplateEngine());
 
    		get("/pronosticado", AppControl::pronosticarFecha, new MustacheTemplateEngine());
