@@ -68,4 +68,38 @@ public class AppControl {
 		nSchadule.addSchadule(aux);
 		return new ModelAndView(nuevoMatch, "./html/logsu.html"); 
 	}
+	
+	public static ModelAndView pronosticarFecha1(Request req, Response res){
+		Map pronostico = new HashMap();
+		Match pronTeams = new Match();
+        List<Match> teamsForPron = pronTeams.getMatchList();
+        //System.out.println(teamsForPron.get(0).getInteger("equipo_local"));
+        //Team eq1 = Team.findById(teamsForPron.get(0).getInteger("equipo_local"));
+        //Team eq2 = Team.findById(teamsForPron.get(0).getInteger("equipo_visitante"));
+        List<Team> eq1 = Team.findBySQL("SELECT nom_equipo FROM teams a JOIN matches b ON a.cod_equipo = b.equipo_local JOIN schadules i USING (cod_partido) WHERE (i.num_fecha = 1) order by b.cod_partido");
+        List<Team> eq2 = Team.findBySQL("SELECT nom_equipo FROM teams a JOIN matches b ON a.cod_equipo = b.equipo_visitante JOIN schadules i USING (cod_partido) WHERE (i.num_fecha = 1) order by b.cod_partido");
+		Team eqprima = eq1.get(0);
+        pronostico.put("nombreEquipo1",eqprima.getString("nom_equipo"));
+        eqprima = eq1.get(1);
+        pronostico.put("nombreEquipo2",eqprima.getString("nom_equipo"));
+        eqprima = eq1.get(2);
+        pronostico.put("nombreEquipo3",eqprima.getString("nom_equipo"));
+        eqprima = eq1.get(3);
+        pronostico.put("nombreEquipo4",eqprima.getString("nom_equipo"));
+        eqprima = eq2.get(0);
+        pronostico.put("nombreEquipo5",eqprima.getString("nom_equipo"));
+        eqprima = eq2.get(1);
+        pronostico.put("nombreEquipo6",eqprima.getString("nom_equipo"));
+        eqprima = eq2.get(2);
+        pronostico.put("nombreEquipo7",eqprima.getString("nom_equipo"));
+        eqprima = eq2.get(3);
+        pronostico.put("nombreEquipo8",eqprima.getString("nom_equipo"));
+        return new ModelAndView(pronostico, "./html/pronosticar.html");
+	}
+
+	public static ModelAndView guardarPronFecha1(Request req, Response res){
+		Prediction nPrediccion = new Prediction();
+   		Map nuevaPred = nPrediccion.addPrediction(req); 
+   		return new ModelAndView(nuevaPred, "./html/logs.html");
+	}
 }
