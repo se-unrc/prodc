@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<title>Pronosticos</title>
+    <title>Pronosticos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   </head>
 
   <body>
-  	<div class="jumbotron bg-primary text-white">
-  			<h1 align= "center">Pronosticar Resultado</h1>
-  			<p align= "center">Ingrese los resultados para los partidos a pronosticar</p>
-  		</div>
-	</div>
-	<div class="container col-sm-3">
-		<form method = "post" action="/pronosticar">
-      <div>
-        <select name="local">
-          <option selected value=""> Elige el equipo local </option>
-          <option value="1"> {{#.}} {{nombreEquipo1}} vs {{nombreEquipo2}} {{/.}} </option>
-          <option value="2"> {{#.}} {{1}} {{/.}} </option>
-          <option value="3"> {{#.}} {{2}} {{/.}} </option>
-          <option value="4"> {{#.}} {{3}} {{/.}} </option>
-        </select>
+    <div class="jumbotron bg-primary text-white">
+        <h1 align= "center">Pronosticar Resultado</h1>
+        <p align= "center">Ingrese los resultados para los partidos a pronosticar</p>
       </div>
-			<div class="form-group">
-  				<input type="text" name="elocal" class="form-control" id="elocal">
-			</div>
-      <div>
-        <select name="visitante">
-          <option selected value=""> Elige el equipo visitante </option>
-          <option value="1"> {{#.}} {{0}} {{/.}} </option>
-          <option value="2"> {{#.}} {{1}} {{/.}} </option>
-          <option value="3"> {{#.}} {{2}} {{/.}} </option>
-          <option value="4"> {{#.}} {{3}} {{/.}} </option>
+  </div>
+  <div class="container col-sm-3">
+    <form method = "post" action="/pronosticar">
+      <div class="form-group">
+          <label for="nombre"> {{#.}} {{nombreEquipo1}} {{/.}}</label>
+          <input type="text" name="elocal1" class="form-control" id="elocal1">
+          <label for="nombre"> {{#.}} vs {{/.}}</label>
+          <label for="nombre"> {{#.}} {{nombreEquipo5}} {{/.}}</label>
+          <input type="text" name="evisit1" class="form-control" id="evisit1">
       </div>
-			<div class="form-group">
-  				<input type="text" name="evisit" class="form-control" id="evisit">
-			</div>
-  			<a href="/logs"></a> <button type="submit" class="btn btn-primary mb-6">Guardar</button>
-		</form> 
-	</div>
+      <div class="form-group">
+          <label for="nombre"> {{#.}} {{nombreEquipo2}} {{/.}}</label>
+          <input type="text" name="elocal2" class="form-control" id="elocal2">
+          <label for="nombre"> {{#.}} vs {{/.}}</label>
+          <label for="nombre"> {{#.}} {{nombreEquipo6}} {{/.}}</label>
+          <input type="text" name="evisit2" class="form-control" id="evisit2">
+      </div>
+      <div class="form-group">
+          <label for="nombre"> {{#.}} {{nombreEquipo3}} {{/.}}</label>
+          <input type="text" name="elocal3" class="form-control" id="elocal3">
+          <label for="nombre"> {{#.}} vs {{/.}}</label>
+          <label for="nombre"> {{#.}} {{nombreEquipo7}} {{/.}}</label>
+          <input type="text" name="evisit3" class="form-control" id="evisit3">
+      </div>
+      <div class="form-group">
+          <label for="nombre"> {{#.}} {{nombreEquipo4}} {{/.}}</label>
+          <input type="text" name="elocal4" class="form-control" id="elocal4">
+          <label for="nombre"> {{#.}} vs {{/.}}</label>
+          <label for="nombre"> {{#.}} {{nombreEquipo8}} {{/.}}</label>
+          <input type="text" name="evisit4" class="form-control" id="evisit4">
+      </div>
+        <a href="/logs"></a> <button type="submit" class="btn btn-primary mb-6">Guardar</button>
+    </form> 
+  </div>
   </body>
 </html>

@@ -100,29 +100,9 @@ public class App{
     	
 	   	
 	   	
-	   	Map pronostico = new HashMap();
-   		get("/pronosticar", (req, res) -> {
-        Match pronTeams = new Match();
-        List<Match> teamsForPron = pronTeams.getMatchList();
-        //System.out.println(teamsForPron.get(0).getInteger("equipo_local"));
-        //Team eq1 = Team.findById(teamsForPron.get(0).getInteger("equipo_local"));
-        //Team eq2 = Team.findById(teamsForPron.get(0).getInteger("equipo_visitante"));
-        List<Team> eq1 = Team.findBySQL("select nom_equipo from teams where cod_equipo = 1");
-        List<Team> eq2 = Team.findBySQL("select nom_equipo from teams where cod_equipo = 2");
-        Team eq1prima = eq1.get(0);
-        Team eq2prima = eq2.get(0);
-        pronostico.put("nombreEquipo1",eq1prima.getString("nom_equipo"));
-        pronostico.put("nombreEquipo2",eq2prima.getString("nom_equipo"));
-        return new ModelAndView(pronostico, "./html/pronosticar.html");
-   		}, new MustacheTemplateEngine()
-   		);
+   		get("/pronosticar", AppControl::pronosticarFecha1, new MustacheTemplateEngine());
 
-	   	post("/pronosticar", (req, res) -> {
-   		Prediction nPrediccion = new Prediction();
-   		Map nuevaPred = nPrediccion.addPrediction(req); 
-   		return new ModelAndView(nuevaPred, "./html/logs.html");
-   		}, new MustacheTemplateEngine()
-   		);
+	   	post("/pronosticar", AppControl::guardarPronFecha1, new MustacheTemplateEngine());
 	}   
     
     //Metricas
