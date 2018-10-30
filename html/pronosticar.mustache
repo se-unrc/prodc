@@ -10,22 +10,20 @@
   <body>
   	<div class="jumbotron bg-primary text-white">
   			<h1 align= "center">Pronosticar Resultado</h1>
-  			<p align= "center">Ingrese los resultados para los partidos a pronosticar</p>
+  			<p align= "center">Seleccione la fecha a pronosticar</p>
   		</div>
 	</div>
 	<div class="container col-sm-3">
-		<form method = "post" action="/pronosticar">
+		<form method = "get" action="/pronosticado">
       		<div>
         	<select name="fecha">
         		<option selected value=""> Elige la fecha </option>
         		{{#Fechas}}
           		<option value="{{num_fecha}}">{{num_fecha}}</option>
-				{{/Fechas}} 
-				
-				<input type="text" name="fecha" id="fecha">       	
+				{{/Fechas}}      	
         	</select>
       		</div>
-        	<a href="/logs"></a> <button type="submit" class="btn btn-primary mb-6">Guardar</button>
+        	<a href="/logs"></a> <button type="submit" class="btn btn-primary mb-6">Seleccionar</button>
 		</form> 
 	</div>
   </body>

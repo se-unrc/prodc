@@ -99,10 +99,11 @@ public class App{
     	
     	
 	   	
-	   	
-   		get("/pronosticar", AppControl::pronosticarFecha1, new MustacheTemplateEngine());
+	   	get("/pronosticar", AppControl::seleccionFecha, new MustacheTemplateEngine());
 
-	   	post("/pronosticar", AppControl::guardarPronFecha1, new MustacheTemplateEngine());
+   		get("/pronosticado", AppControl::pronosticarFecha, new MustacheTemplateEngine());
+
+	   	post("/pronosticado", AppControl::guardarPronFecha, new MustacheTemplateEngine());
 	}   
     
     //Metricas
