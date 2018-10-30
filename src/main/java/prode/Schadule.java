@@ -30,7 +30,14 @@ public class Schadule extends Model {
 		}
 	
 	}
-	
-	
+
+	public List<Schadule> listSchadule(){
+		List<Schadule> busqueda = Schadule.findBySQL("select distinct num_fecha from schadules ");
+		return busqueda;
+	}
+
+	public int num_fecha() {
+    	return this.getInteger("num_fecha");
+    }
 	
 }
