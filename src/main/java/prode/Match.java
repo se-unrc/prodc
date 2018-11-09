@@ -61,7 +61,7 @@ public class Match extends Model {
     	
 	}
 	
-	public ArrayList<String> getCode() {	
+	public ArrayList<String> getCodeNoSchadule() {	
     	ArrayList<String> code = new ArrayList<String>();
     	List<Match> busqueda  = Match.findBySQL("select cod_partido from matches where cod_partido not in (select cod_partido from schadules) ");
     	for (int i = 0; i < busqueda.size(); i++) {

@@ -9,28 +9,31 @@ public class Prediction extends Model {
 
 	public Prediction(){}
 
-	public Map addPrediction(Request req, int idUser){
-	
+	public Map addPrediction(Request req, int idUser, List<Schadule> listMatch){
+		
 		String golloc = (String) req.queryParams("elocal1");
 		String golvis = (String) req.queryParams("evisit1");
-
-		int golLocal = (int)golloc.charAt(0);
-		int golVisit = (int)golvis.charAt(0);
-
+		
+		Integer golLocal = Integer.parseInt(golloc);
+		Integer golVisit = Integer.parseInt(golvis);
+		Integer n = Integer.parseInt(listMatch.get(0).toString());
+		System.out.println(n.toString());
+		
 		Map pred = new HashMap();
 		Prediction p = new Prediction();
 		p.set("equipoL", golLocal);
 		p.set("equipoV", golVisit);
 		p.set("id_usuario", idUser);
+		p.set("cod_partido", n);
 		p.saveIt();
-
-
+		
+		
 		golloc = (String) req.queryParams("elocal2");
 		golvis = (String) req.queryParams("evisit2");
-
-		golLocal = (int)golloc.charAt(0);
-		golVisit = (int)golvis.charAt(0);
-
+		
+		golLocal = Integer.parseInt(golloc);
+		golVisit = Integer.parseInt(golvis);
+		
 		Prediction q = new Prediction();
 		q.set("equipoL", golLocal);
 		q.set("equipoV", golVisit);
@@ -41,9 +44,9 @@ public class Prediction extends Model {
 		golloc = (String) req.queryParams("elocal3");
 		golvis = (String) req.queryParams("evisit3");
 
-		golLocal = (int)golloc.charAt(0);
-		golVisit = (int)golvis.charAt(0);
-
+		golLocal = Integer.parseInt(golloc);
+		golVisit = Integer.parseInt(golvis);
+		
 		Prediction r = new Prediction();
 		r.set("equipoL", golLocal);
 		r.set("equipoV", golVisit);
@@ -54,9 +57,9 @@ public class Prediction extends Model {
 		golloc = (String) req.queryParams("elocal4");
 		golvis = (String) req.queryParams("evisit4");
 
-		golLocal = (int)golloc.charAt(0);
-		golVisit = (int)golvis.charAt(0);
-
+		golLocal = Integer.parseInt(golloc);
+		golVisit = Integer.parseInt(golvis);
+		
 		Prediction s = new Prediction();
 		s.set("equipoL", golLocal);
 		s.set("equipoV", golVisit);

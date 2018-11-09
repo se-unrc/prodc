@@ -2,6 +2,8 @@ package prode;
 
 import java.util.*;
 import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.Model;
+
 import static spark.Spark.*;	
 import prode.User;
 //import spark.ModelAndView;
@@ -11,6 +13,7 @@ import spark.template.mustache.MustacheTemplateEngine;
 public class AppControl { 
 	
 	private static int idUser;
+	private static List<Schadule> listCodMatch;
 	
 	public static ModelAndView registro(Request req, Response res) {
 		User nUsuario = new User();
@@ -67,7 +70,7 @@ public class AppControl {
 		Map nuevoMatch = nMatch.addMatchs(req);
 		Schadule nSchadule = new Schadule();
 		ArrayList<String> aux = new ArrayList<String>();
-		aux = nMatch.getCode();
+		aux = nMatch.getCodeNoSchadule();
 		nSchadule.addSchadule(aux);
 		return new ModelAndView(nuevoMatch, "./html/logsu.html"); 
 	}
@@ -87,7 +90,8 @@ public class AppControl {
         int f = Integer.parseInt(req.queryParams("fecha"));
         List<Team> eq1 = Team.findBySQL("SELECT nom_equipo FROM teams a JOIN matches b ON a.cod_equipo = b.equipo_local JOIN schadules i USING (cod_partido) WHERE (i.num_fecha = '"+f+"') order by b.cod_partido");
         List<Team> eq2 = Team.findBySQL("SELECT nom_equipo FROM teams a JOIN matches b ON a.cod_equipo = b.equipo_visitante JOIN schadules i USING (cod_partido) WHERE (i.num_fecha = '"+f+"') order by b.cod_partido");
-		Team eqprima = eq1.get(0);
+        listCodMatch = Schadule.findBySQL("SELECT cod_partido FROM schadules WHERE num_fecha = '"+f+"' ");
+        Team eqprima = eq1.get(0);
         pronostico.put("nombreEquipo1",eqprima.getString("nom_equipo"));
         eqprima = eq1.get(1);
         pronostico.put("nombreEquipo2",eqprima.getString("nom_equipo"));
@@ -108,7 +112,7 @@ public class AppControl {
 
 	public static ModelAndView guardarPronFecha(Request req, Response res){
 		Prediction nPrediccion = new Prediction();
-   		Map nuevaPred = nPrediccion.addPrediction(req, idUser); 
+   		Map nuevaPred = nPrediccion.addPrediction(req, idUser, listCodMatch); 
    		return new ModelAndView(nuevaPred, "./html/logs.html");
 	}
 }
