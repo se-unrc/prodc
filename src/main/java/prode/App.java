@@ -84,7 +84,7 @@ public class App{
 
 	   	post("/cargar",AppControl::armarFecha, new MustacheTemplateEngine());
 	 
-	   	
+	   	/*
 	   	metrics.name(Queue.class, "requests", "size");
     	System.out.println(metrics.toString());
     	
@@ -92,7 +92,7 @@ public class App{
         Meter requests = metrics.meter("requests");
         requests.mark();
         wait5Seconds();    	
-	   
+	   	*/
 	   	get("/pronosticar", AppControl::seleccionFecha, new MustacheTemplateEngine());
 
    		get("/pronosticado", AppControl::pronosticarFecha, new MustacheTemplateEngine());
@@ -102,7 +102,7 @@ public class App{
     
     //Metricas
     
-    static void startReport() {
+    /*static void startReport() {
         ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics)
             .convertRatesTo(TimeUnit.SECONDS)
             .convertDurationsTo(TimeUnit.MILLISECONDS)
@@ -114,8 +114,6 @@ public class App{
         try {
             Thread.sleep(5*1000);
         }
-        catch(InterruptedException e) {}
-    }
-    
+        catch(InterruptedException e) {}*/
 }
 
