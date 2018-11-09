@@ -16,15 +16,15 @@ public class Prediction extends Model {
 		
 		Integer golLocal = Integer.parseInt(golloc);
 		Integer golVisit = Integer.parseInt(golvis);
-		Integer n = Integer.parseInt(listMatch.get(0).toString());
-		System.out.println(n.toString());
+		Schadule a = listMatch.get(0);
+		Integer b = (Integer)a.get("cod_partido");
 		
 		Map pred = new HashMap();
 		Prediction p = new Prediction();
 		p.set("equipoL", golLocal);
 		p.set("equipoV", golVisit);
 		p.set("id_usuario", idUser);
-		p.set("cod_partido", n);
+		p.set("cod_partido", b);
 		p.saveIt();
 		
 		
@@ -33,11 +33,14 @@ public class Prediction extends Model {
 		
 		golLocal = Integer.parseInt(golloc);
 		golVisit = Integer.parseInt(golvis);
+		a = listMatch.get(1);
+		b = (Integer)a.get("cod_partido");
 		
 		Prediction q = new Prediction();
 		q.set("equipoL", golLocal);
 		q.set("equipoV", golVisit);
 		q.set("id_usuario", idUser);
+		q.set("cod_partido", b);
 		q.saveIt();
 
 
@@ -46,11 +49,15 @@ public class Prediction extends Model {
 
 		golLocal = Integer.parseInt(golloc);
 		golVisit = Integer.parseInt(golvis);
+		a = listMatch.get(2);
+		b = (Integer)a.get("cod_partido");
+	
 		
 		Prediction r = new Prediction();
 		r.set("equipoL", golLocal);
 		r.set("equipoV", golVisit);
 		r.set("id_usuario", idUser);
+		r.set("cod_partido", b);
 		r.saveIt();
 
 
@@ -59,11 +66,15 @@ public class Prediction extends Model {
 
 		golLocal = Integer.parseInt(golloc);
 		golVisit = Integer.parseInt(golvis);
+		a = listMatch.get(3);
+		b = (Integer)a.get("cod_partido");
+	
 		
 		Prediction s = new Prediction();
 		s.set("equipoL", golLocal);
 		s.set("equipoV", golVisit);
 		s.set("id_usuario", idUser);
+		s.set("cod_partido", b);
 		s.saveIt();
 
 

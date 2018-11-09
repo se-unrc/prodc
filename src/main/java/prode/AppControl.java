@@ -14,6 +14,7 @@ public class AppControl {
 	
 	private static int idUser;
 	private static List<Schadule> listCodMatch;
+	private static int f;
 	
 	public static ModelAndView registro(Request req, Response res) {
 		User nUsuario = new User();
@@ -87,10 +88,10 @@ public class AppControl {
 		Map pronostico = new HashMap();
 		Match pronTeams = new Match();
         List<Match> teamsForPron = pronTeams.getMatchList();
-        int f = Integer.parseInt(req.queryParams("fecha"));
+        f = Integer.parseInt(req.queryParams("fecha"));
         List<Team> eq1 = Team.findBySQL("SELECT nom_equipo FROM teams a JOIN matches b ON a.cod_equipo = b.equipo_local JOIN schadules i USING (cod_partido) WHERE (i.num_fecha = '"+f+"') order by b.cod_partido");
         List<Team> eq2 = Team.findBySQL("SELECT nom_equipo FROM teams a JOIN matches b ON a.cod_equipo = b.equipo_visitante JOIN schadules i USING (cod_partido) WHERE (i.num_fecha = '"+f+"') order by b.cod_partido");
-        listCodMatch = Schadule.findBySQL("SELECT cod_partido FROM schadules WHERE num_fecha = '"+f+"' ");
+        
         Team eqprima = eq1.get(0);
         pronostico.put("nombreEquipo1",eqprima.getString("nom_equipo"));
         eqprima = eq1.get(1);
@@ -111,6 +112,7 @@ public class AppControl {
 	}
 
 	public static ModelAndView guardarPronFecha(Request req, Response res){
+		listCodMatch = Schadule.findBySQL("SELECT cod_partido FROM schadules WHERE num_fecha = '"+f+"' ");
 		Prediction nPrediccion = new Prediction();
    		Map nuevaPred = nPrediccion.addPrediction(req, idUser, listCodMatch); 
    		return new ModelAndView(nuevaPred, "./html/logs.html");
