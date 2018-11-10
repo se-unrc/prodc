@@ -81,4 +81,40 @@ public class Prediction extends Model {
 		pred.put("exito", "Predicción realizada! MUCHA SUERTE!");
 		return pred;
 	}
+	
+	public int compararPred(Prediction adm, Prediction user) {
+		if ((Integer)adm.get("equipoL") == (Integer)user.get("equipoL") && (Integer)adm.get("equipoV") == (Integer)user.get("equipoV"))
+			return 3;
+		if ((Integer)adm.get("equipoL") < (Integer)adm.get("equipoV") && (Integer)user.get("equipoL") < (Integer)user.get("equipoV"))
+			return 1;
+		if ((Integer)adm.get("equipoL") > (Integer)adm.get("equipoV") && (Integer)user.get("equipoL") > (Integer)user.get("equipoV"))
+			return 1;
+		return 0;	
+	}
+	
+	public void Guardarpuntaje(List<Prediction> UserList, List<Prediction> AdminList) {
+		int result = 0;
+		int id;
+		int j = 0;
+		for (int i = 0; i < UserList.size(); i++) {
+			result = result + compararPred(AdminList.get(j), UserList.get(i));
+			if (j == (AdminList.size()-1)) {
+				j = 0;
+				id = (Integer)UserList.get(i-1).get("id_usuario");
+				List<User> user = User.where("id = ?", id);
+				User u = user.get(0);
+				u.set("puntos", result);
+				u.saveIt();
+				result = 0;
+			}	
+			j++;
+		}
+	}
+	
+	/*List<Point> points = Point.where("id = ?", id);
+	Point p = points.get(0);
+	p.set("puntajeActual", result);
+	p.puntajeTotal(p, id);
+	p.saveIt();
+	*/
 }

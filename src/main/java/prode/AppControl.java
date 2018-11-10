@@ -12,7 +12,7 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 public class AppControl { 
 	
-	private static int idUser;
+	public static int idUser;
 	private static List<Schadule> listCodMatch;
 	private static int f;
 	
@@ -88,7 +88,8 @@ public class AppControl {
 		Map pronostico = new HashMap();
 		Match pronTeams = new Match();
         List<Match> teamsForPron = pronTeams.getMatchList();
-        f = Integer.parseInt(req.queryParams("fecha"));
+        String fech = (req.queryParams("fecha").toString());
+        f = Integer.parseInt(fech);
         List<Team> eq1 = Team.findBySQL("SELECT nom_equipo FROM teams a JOIN matches b ON a.cod_equipo = b.equipo_local JOIN schadules i USING (cod_partido) WHERE (i.num_fecha = '"+f+"') order by b.cod_partido");
         List<Team> eq2 = Team.findBySQL("SELECT nom_equipo FROM teams a JOIN matches b ON a.cod_equipo = b.equipo_visitante JOIN schadules i USING (cod_partido) WHERE (i.num_fecha = '"+f+"') order by b.cod_partido");
         
@@ -114,7 +115,16 @@ public class AppControl {
 	public static ModelAndView guardarPronFecha(Request req, Response res){
 		listCodMatch = Schadule.findBySQL("SELECT cod_partido FROM schadules WHERE num_fecha = '"+f+"' ");
 		Prediction nPrediccion = new Prediction();
-   		Map nuevaPred = nPrediccion.addPrediction(req, idUser, listCodMatch); 
-   		return new ModelAndView(nuevaPred, "./html/logs.html");
+   		Map nuevaPred = nPrediccion.addPrediction(req, idUser, listCodMatch);
+   		if (idUser != 1) { 
+   			//Point p = new Point();
+   			//p.crearPoint(idUser);
+   			return new ModelAndView(nuevaPred, "./html/logs.html");
+   		} else {
+   		List<Prediction> resultados = nPrediccion.findBySQL("SELECT * FROM predictions WHERE id_usuario = '"+idUser+"' AND cod_partido IN (select cod_partido from schadules WHERE num_fecha = '"+f+"') ");
+   		List<Prediction> predicciones = nPrediccion.findBySQL("SELECT * FROM predictions WHERE id_usuario != '"+idUser+"' AND cod_partido IN (select cod_partido from schadules WHERE num_fecha = '"+f+"') "); 	
+   		nPrediccion.Guardarpuntaje(predicciones, resultados);	
+   			return new ModelAndView(nuevaPred, "./html/logsu.html");
+   		}	
 	}
 }

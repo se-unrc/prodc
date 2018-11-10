@@ -38,7 +38,7 @@ public class User extends Model {
 		String userlog = req.queryParams("user");
 		String passlog = req.queryParams("password");
 		User u = new User();
-       	u.set("username", userlog);
+		u.set("username", userlog);
         u.set("password", passlog);
         u.set("superu", false);
         u.saveIt();
