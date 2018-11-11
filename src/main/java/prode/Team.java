@@ -11,16 +11,24 @@ import org.javalite.activejdbc.Model;
 public class Team extends Model {
 
 	public Team(){ }
+	
+	public boolean validTeam(String s) {
+		return (s != "" && s.length() >= 4);
+	}
 
-	public boolean checkTeam(Request req) {
+	public boolean checkTeam(Request req) throws IllegalArgumentException{
 		String nom = req.queryParams ("nombre");
+		if (!validTeam(nom)) 
+			throw new IllegalArgumentException("Nombre de Team no valido"); 
 		List<Team> busqueda = Team.where("nom_equipo = ?", nom);
 		Boolean esta = (busqueda.size() != 0);
 		return esta;
 	}
 	
-	public void addTeam(Request req){
+	public void addTeam(Request req) throws IllegalArgumentException{
 		String nom = req.queryParams ("nombre");
+		if (!validTeam(nom)) 
+			throw new IllegalArgumentException("Nombre de Team no valido"); 
 		Team t = new Team();
 		t.set("nom_equipo", nom);
 		t.saveIt();
