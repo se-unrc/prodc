@@ -28,6 +28,27 @@ public class UserTest {
  	public void validatePrecenseOfUsernames(){
       	User user = new User();
       	user.set("username", "");
-    	assertEquals(user.isValid(), true);
+  		assertEquals(user.checkUsername(user), false);
+  	}
+  	
+  	@Test
+  	public void username5char() {
+  		User user = new User();
+  		user.set("username", "asd");
+  		assertEquals(user.checkUsername(user), false);
+  	}
+  	
+  	@Test
+  	public void validatePrecenseOfPassword() {
+  		User user = new User();
+  		user.set("password", "");
+  		assertEquals(user.checkPassword(user), false);
+  	}
+  	
+  	@Test
+  	public void pass5char() {
+  		User user = new User();
+  		user.set("password", "asd");
+  		assertEquals(user.checkPassword(user), false);
   	}
 }
