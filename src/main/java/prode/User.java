@@ -24,7 +24,17 @@ public class User extends Model {
 		}	
 	}
 	
-	public boolean checkUser(Request req) {
+	public boolean checkUsername(User user) {
+		String username = (String) user.get("username");
+		return !(username == "" || username.length() < 5);
+	}
+	
+	public boolean checkPassword(User user) {
+		String password = (String) user.get("password");
+		return !(password == "" || password.length() < 5);
+	}
+		
+	public boolean checkUser(Request req) throws IllegalArgumentException {
 		String userlog = req.queryParams("user");
 		String passlog = req.queryParams("password");
 		List<User> busqueda = User.where("username = ? and password = ?", userlog, passlog);
@@ -34,12 +44,14 @@ public class User extends Model {
 		
 	
 
-	public void addUser(Request req){
+	public void addUser(Request req) throws IllegalArgumentException {
 		String userlog = req.queryParams("user");
 		String passlog = req.queryParams("password");
 		User u = new User();
 		u.set("username", userlog);
         u.set("password", passlog);
+        if (!(u.checkPassword(u) || u.checkUsername(u)))
+        	throw new IllegalArgumentException("Nombre de usuario o contraseña demasiado cortos");
         u.set("superu", false);
         u.saveIt();
     }
