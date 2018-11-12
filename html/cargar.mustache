@@ -10,93 +10,90 @@
   <body>
     <div class="jumbotron bg-primary text-white">
   		<h1 align= "center">Cargar Partido</h1>
-  		</div>
   	</div>
-  	<div class="container col-sm-3">
   	<form method = "post" action="/cargar">
-  			<br>
-  			<div>
-  			<h1 align= "center">Partido 1</h1>
-  			<select name="local1">
-   				<option selected value=""> Elige el equipo local </option>
-				{{#equipos}}
-   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
-   				{{/equipos}}
-   				</option>
-   			</select>
+  		<br>
+  		<div class = "row">
+  			<div class="col">
+  				<h1 align= "center">Partido 1</h1>
+  				<br>
+  				<select name="local1">
+   					<option selected value=""> Elige el equipo local </option>
+					{{#equipos}}
+   						<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   					{{/equipos}}
+   					</option>
+   				</select>
+   				<br>
+   				<select name="visitante1">
+   					<option selected value=""> Elige el equipo visitante </option>
+   					{{#equipos}}
+   						<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   					{{/equipos}}
+   				</select>
    			</div>
    			<br>
-   			<div>
-   			<select name="visitante1">
-   				<option selected value=""> Elige el equipo visitante </option>
-   				{{#equipos}}
+   			<div class = "col">
+   				<h1 align= "center">Partido 2</h1>
+  				<br>
+  				<select name="local2">
+   					<option selected value=""> Elige el equipo local </option>
+   					{{#equipos}}
    					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
-   				{{/equipos}}
-   			</div>
-   			</select>
-   			<br>
-   			<div>
-   			<h1 align= "center">Partido 2</h1>
-  			<br>
-  			<select name="local2">
-   				<option selected value=""> Elige el equipo local </option>
-   				{{#equipos}}
-   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
-   				{{/equipos}}
-   			</select>
+   					{{/equipos}}
+   				</select>
+   				<br>
+   				<select name="visitante2">
+   					<option selected value=""> Elige el equipo visitante </option>
+   					{{#equipos}}
+   						<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   					{{/equipos}}
+   				</select>
    			</div>
    			<br>
-   			<div>
-   			<select name="visitante2">
-   				<option selected value=""> Elige el equipo visitante </option>
-   				{{#equipos}}
-   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
-   				{{/equipos}}
-   			</div>
-   			</select>
-   			<br>
-   			<h1 align= "center">Partido 3</h1>
-   			<br>	
-   			<div>
-  			<select name="local3">
-   				<option selected value=""> Elige el equipo local </option>
-   				{{#equipos}}
-   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
-   				{{/equipos}}
-   			</select>
+   			<div class = "col">
+   				<h1 align= "center">Partido 3</h1>
+   				<br>	
+  				<select name="local3">
+   					<option selected value=""> Elige el equipo local </option>
+   					{{#equipos}}
+   						<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   					{{/equipos}}
+   				</select>
+   				<br>	
+   				<select name="visitante3">
+   					<option selected value=""> Elige el equipo visitante </option>
+   					{{#equipos}}
+   						<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   					{{/equipos}}
+   				</select>
    			</div>
    			<br>
-   			<div>
-   			<select name="visitante3">
-   				<option selected value=""> Elige el equipo visitante </option>
-   				{{#equipos}}
-   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
-   				{{/equipos}}
-   			</div>
-   			</select>
-   			<div>
-   			<br>
-   			<h1 align= "center">Partido 4</h1>
-   			<br>	
-  			<select name="local4">
-   				<option selected value=""> Elige el equipo local </option>
-   				{{#equipos}}
-   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
-   				{{/equipos}}
-   			</select>
-   			</div>
-   			<br>
-   			<div>
-   			<select name="visitante4">
-   				<option selected value=""> Elige el equipo visitante </option>
-   				{{#equipos}}
-   					<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
-   				{{/equipos}}
-   			</div>
-   			</select>
+   			<div class = "col">
+   				<h1 align= "center">Partido 4</h1>
+   				<br>	
+   				<select name="local4">
+   					<option selected value=""> Elige el equipo local </option>
+   					{{#equipos}}
+   						<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   					{{/equipos}}
+   				</select>
+   				<br>
+   				<select name="visitante4">
+   					<option selected value=""> Elige el equipo visitante </option>
+   					{{#equipos}}
+   						<option value="{{cod_equipo}}"> {{nom_equipo}}  </option>
+   					{{/equipos}}
+   				</select>
+   			</div>	
    			<br>		
-  		<a href="/logsu"></a> <button type="submit" class="btn btn-primary mb-6">Guardar</button>
-  	</form>
-  	</div>	
+  		</div>
+  		<br>
+  		<br>
+  		<br>
+  		<div align="center">
+  			<a href="/logsu"></a> <button type="submit" class="btn btn-primary">Guardar</button>
+  		</div>
+  	</form>	
  </body>
 </html>			
