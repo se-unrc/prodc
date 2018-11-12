@@ -7,7 +7,7 @@ import org.javalite.activejdbc.LazyList;
 import org.javalite.activejdbc.Model;
 import static spark.Spark.*;
 
-import prode.User;
+import Model.User;
 
 public class UserService {
 

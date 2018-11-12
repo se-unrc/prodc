@@ -1,4 +1,4 @@
-package prode;
+package Model;
 
 import java.sql.Date;
 import org.javalite.activejdbc.Model;
@@ -8,8 +8,6 @@ public class Game extends Model {
   static{
     validatePresenceOf();
   }
-
-  public Game(){}
 
   public Game(Date diaPartido,int fecha) { //primero se crean los partidos pero no sabemos quien juega en cada cual, solo la fecha
 	  set("fecha", fecha);

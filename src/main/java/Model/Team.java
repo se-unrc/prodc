@@ -1,4 +1,4 @@
-package prode;
+package Model;
 
 import org.javalite.activejdbc.Model;
 
@@ -7,7 +7,7 @@ public class Team extends Model {
     validatePresenceOf();
   }
   public Team(){}
-    
+
   public Team(String nombre) {
 	  set("name", nombre);
 	  saveIt();

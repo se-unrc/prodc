@@ -1,4 +1,4 @@
-package prode;
+package Model;
 
 import org.javalite.activejdbc.Model;
 

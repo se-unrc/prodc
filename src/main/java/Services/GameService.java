@@ -6,9 +6,7 @@ import org.javalite.activejdbc.Model;
 import static spark.Spark.*;
 import java.util.List;
 
-import prode.Game;
-import prode.Team;
-import prode.User;
+import Model.*;
 
 public class GameService {
 

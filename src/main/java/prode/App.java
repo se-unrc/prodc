@@ -14,6 +14,8 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 import static spark.Spark.*;
 
+import Model.*;
+
 //Clase principal
 public class App
 {
