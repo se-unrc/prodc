@@ -3,7 +3,7 @@ package Utils;
 import com.codahale.metrics.*;
 import java.util.concurrent.TimeUnit;
 
-public class Metrics{
+public class Utils{
 
 static final MetricRegistry metrics = new MetricRegistry();
 
@@ -11,7 +11,7 @@ public static void main(String args[]) {
     startReport();
     Meter requests = metrics.meter("requests");
     requests.mark();
-    wait5Seconds();
+    wait3Seconds();
     }
 
     static void startReport() {
