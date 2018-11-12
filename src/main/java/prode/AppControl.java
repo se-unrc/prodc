@@ -117,13 +117,13 @@ public class AppControl {
 		Prediction nPrediccion = new Prediction();
    		Map nuevaPred = nPrediccion.addPrediction(req, idUser, listCodMatch);
    		if (idUser != 1) { 
-   			//Point p = new Point();
-   			//p.crearPoint(idUser);
+   			Point p = new Point();
+   			p.crearPoint(idUser, f);
    			return new ModelAndView(nuevaPred, "./html/logs.html");
    		} else {
    		List<Prediction> resultados = nPrediccion.findBySQL("SELECT * FROM predictions WHERE id_usuario = '"+idUser+"' AND cod_partido IN (select cod_partido from schadules WHERE num_fecha = '"+f+"') ");
    		List<Prediction> predicciones = nPrediccion.findBySQL("SELECT * FROM predictions WHERE id_usuario != '"+idUser+"' AND cod_partido IN (select cod_partido from schadules WHERE num_fecha = '"+f+"') "); 	
-   		nPrediccion.Guardarpuntaje(predicciones, resultados);	
+   		nPrediccion.guardarPuntaje(predicciones, resultados, f);	
    			return new ModelAndView(nuevaPred, "./html/logsu.html");
    		}	
 	}

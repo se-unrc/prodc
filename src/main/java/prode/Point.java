@@ -11,23 +11,21 @@ public class Point extends Model {
 	
 	public Point() {	}
 	
-	public void crearPoint(int id) {
+	public void crearPoint(int idUser, int idFecha) {
 		Point p = new Point();
-		p.set("id", id);
+		p.set("idUser", idUser);
+		p.set("idFecha", idFecha);
 		p.saveIt();
 	}
 	
-	public void puntajeTotal(Point p, int id) {
+	public int puntajeTotal(int idUser) {
 		int suma = 0;
-	    List<Point> sum = Point.findBySQL("SELECT * from points WHERE id = '"+id+"'");
-	    
+		Point p = new Point();
+	    List<Point> sum = Point.findBySQL("SELECT * from points WHERE idUser = '"+idUser+"'");
 	    for (int i = 0; i<sum.size();i++) {
 	    	 p = sum.get(i);
 	         suma = suma + (Integer)p.get("puntajeActual"); 
 	    }
-	    
-		p.set("puntajeTotal", suma);
-		
-	}
-	
+		return suma;
+	}	
 }
