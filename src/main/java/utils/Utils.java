@@ -1,4 +1,4 @@
-package utils;
+package Utils;
 
 import com.codahale.metrics.*;
 import java.util.concurrent.TimeUnit;
