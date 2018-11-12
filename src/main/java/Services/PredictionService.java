@@ -11,21 +11,41 @@ import prode.Prediction;
 
 public class PredictionService {
 
+
+
   //Crea predicciones para usuarios
+  /*Segun que fecha ingrese el usuario,
+    va a ser el nroPartido(id_game en database)
+    en fecha=0 (octavos) son 8 partidos y comienza con el primero
+    la */
  public void createPrediction(int id_user, int fecha,String [] equipos) {
-   int i = 0;
-   int c = 1;
-   if(fecha==0) {c=1;} //octavos
-   if(fecha==1) {c=9;} //cuartos
-   if(fecha==2) {c=13;} //semis
-   if(fecha==3) {c=15;}
-   while(i < equipos.length) {
-    if(!equipos[i].isEmpty() && !equipos[i + 1].isEmpty()){
-      Prediction p = new Prediction(c, id_user, equipos[i], equipos[i+1], fecha);
-     }
-     i=i+2;
-     c++;
+   String equipo_local;
+   String equipo_visitante;
+   int nroPartido = 0;
+   switch(fecha){
+       case 0:
+       nroPartido=1;//octavos
+       break;
+       case 1:
+       nroPartido=9;//cuartos
+       break;
+       case 2:
+       nroPartido=13;//semifinales
+       break;
+       case 3:
+       nroPartido=15;//finalº
+       break;
    }
+   for (int i=0; i < equipos.length; i++) {
+        equipo_local = equipos[i];
+        equipo_visitante = equipos[i+1];
+        if(!equipos[i].isEmpty() && !equipos[i+1].isEmpty()){
+           Prediction prediccion = new Prediction(nroPartido, id_user, equipo_local, equipo_visitante, fecha);
+        }
+        else{/*entra por else siel ususario no lleno los campos del equipo, tratar error*/}
+        i++;
+        nroPartido++;
+    }
  }
 
  //Lista todas las predicciones de un usuario

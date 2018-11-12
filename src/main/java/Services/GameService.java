@@ -14,26 +14,39 @@ public class GameService {
 
   //Actualiza la tabla juego solo si es administrador
  public void updateGames(int fecha, String [] equipos) {
-   int i = 0;
-   int c = 1;
-   if(fecha==0) {c=1;} //octavos
-   if(fecha==1) {c=9;} //cuartos
-   if(fecha==2) {c=13;} //semis
-   if(fecha==3) {c=15;}
-   while(i < equipos.length) {
-     //Busca el juego para despues actualizar los equipo
-     Game game = Game.findFirst(" id = ?", c);
-     //Verifica si existe algun dato que actualizar
-     if(!equipos[i].isEmpty() && !equipos[i + 1].isEmpty()){
-       game.set("team_loc",equipos[i]);
-       game.set("team_vis",equipos[i + 1]);
-       game.saveIt();
-       updatePoints(c);
+     String equipo_local;
+     String equipo_visitante;
+     int nroPartido = 0;
+     switch(fecha){
+         case 0:
+         nroPartido=1;//octavos
+         break;
+         case 1:
+         nroPartido=9;//cuartos
+         break;
+         case 2:
+         nroPartido=13;//semifinales
+         break;
+         case 3:
+         nroPartido=15;//finalº
+         break;
      }
-     i=i+2;
-     c++;
-   }
- }
+     for (int i=0; i < equipos.length; i++) {
+         //Busca el juego para despues actualizar los equipo
+         Game game = Game.findFirst(" id = ?", nroPartido);
+         //Verifica si existe algun dato que actualizar
+         if(!equipos[i].isEmpty() && !equipos[i+1].isEmpty()){
+             equipo_local = equipos[i];
+             equipo_visitante = equipos[i+1];
+             game.set("team_loc",equipo_local);
+             game.set("team_vis",equipo_visitante);
+             game.saveIt();
+             updatePoints(nroPartido);
+         }
+         i++;
+         nroPartido++;
+     }
+    }
 
  //Actualiza los puntos de los usuarios en un determinado juego
  private void updatePoints(int id_game){
