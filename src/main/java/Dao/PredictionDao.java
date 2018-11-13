@@ -1,4 +1,4 @@
-package Services;
+package Dao;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import static spark.Spark.*;
 
 import Model.Prediction;
 
-public class PredictionService {
+public class PredictionDao {
 
 
 

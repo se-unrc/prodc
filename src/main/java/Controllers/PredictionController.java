@@ -9,14 +9,13 @@ import java.util.HashMap;
 
 import org.javalite.activejdbc.Base;
 
-import Services.*;
-import prode.Prediction;
-import prode.Team;
+import Dao.*;
+import Model.*;
 import spark.ModelAndView;
 
 public class PredictionController {
 
-	public PredictionController(final PredictionService predictionService, final GameService gameService ) {
+	public PredictionController(final PredictionDao predictionDao, final GameDao gameDao ) {
 
     //Direcciona a la pagina correspondiente
     post("/prediction", (req, res) -> {
@@ -46,10 +45,10 @@ public class PredictionController {
 			String type = req.session().attribute("TYPE");
 			map.put("nombre",req.session().attribute("USER"));
 			if(type.equalsIgnoreCase("1")){
-         gameService.updateGames(option, games);
+         gameDao.updateGames(option, games);
        }
  			else {
-        predictionService.createPrediction(id_user, option, games);
+        predictionDao.createPrediction(id_user, option, games);
       }
       return new ModelAndView(map, "./Dashboard/profile.mustache");
     }, new MustacheTemplateEngine());
@@ -57,7 +56,7 @@ public class PredictionController {
     //Obtiene todos los equipos y los muestra
     get("/teams", (req, res) -> {
       Map<String, List<Team>> map = new HashMap<>();
-      List<Team> lt = gameService.listTeams();
+      List<Team> lt = gameDao.listTeams();
       map.put("games",lt);
 			map.put("nombre",req.session().attribute("USER"));
       return new ModelAndView(map, "./Dashboard/teams.mustache");

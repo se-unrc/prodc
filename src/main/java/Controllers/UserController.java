@@ -9,13 +9,13 @@ import java.util.HashMap;
 
 import org.javalite.activejdbc.Base;
 
-import Services.UserService;
-import prode.User;
+import Dao.*;
+import Model.*;
 import spark.ModelAndView;
 
 public class UserController {
 
-	public UserController(final UserService userService) {
+	public UserController(final UserDao userDao) {
 
 	//Validar que el usuario este logueado
   before("/profile/*",(request, response) -> {
@@ -48,7 +48,7 @@ public class UserController {
   get("/users/:id", (req, res) -> {
 			Map map = new HashMap();
 			String id = req.params(":id");
-			User user = userService.getUser(id);
+			User user = userDao.getUser(id);
       if(user == null){
         return new ModelAndView(null, "./404.mustache");
       }
@@ -68,7 +68,7 @@ public class UserController {
 			Map map = new HashMap();
       String username = req.queryParams("username");
       String pass = req.queryParams("password");
-      User user = userService.isUser(username,pass);
+      User user = userDao.isUser(username,pass);
       if(user != null){
         req.session(true);
         req.session().attribute("USER",username);
@@ -89,7 +89,7 @@ public class UserController {
 			String username = req.queryParams("username");
 			String pass = req.queryParams("password");
 			String email = req.queryParams("email");
-			User user = userService.createUser(username,pass,email);
+			User user = userDao.createUser(username,pass,email);
 			if(user == null){
 				return new ModelAndView(null, "./404.mustache");
 			}

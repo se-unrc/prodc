@@ -1,4 +1,4 @@
- package Services;
+ package Dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import static spark.Spark.*;
 
 import Model.User;
 
-public class UserService {
+public class UserDao {
 
   //Lista todos los usuarios
 	public List<User> getAllUsers() {

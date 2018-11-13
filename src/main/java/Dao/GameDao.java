@@ -1,4 +1,4 @@
-package Services;
+package Dao;
 
 import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.LazyList;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import Model.*;
 
-public class GameService {
+public class GameDao {
 
   //Actualiza la tabla juego solo si es administrador
  public void updateGames(int fecha, String [] equipos) {
