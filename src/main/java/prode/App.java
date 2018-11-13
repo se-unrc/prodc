@@ -16,11 +16,20 @@ import static spark.Spark.*;
 
 import Model.*;
 
+import com.codahale.metrics.*;
+import java.util.concurrent.TimeUnit;
+
 //Clase principal
 public class App
 {
+	static final MetricRegistry metrics = new MetricRegistry();
+	
     public static void main( String[] args )
     {
+		//metrica
+		Meter requests = metrics.meter("requests");
+		startReport();
+		
       //Directorio de recursos /imagenes/estilos/scripts
        staticFiles.location("/public/");
        //Puerto de la aplicacion
@@ -28,7 +37,8 @@ public class App
 
        //Abre conexion antes de cada solicitud
        before((request, response) -> {
-         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "");
+		 requests.mark();  
+         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
        });
 
        //Cierra conexion
@@ -49,4 +59,12 @@ public class App
         new PredictionController(new PredictionDao(), new GameDao());
         new ResultsController(new GameDao());
       }
+      
+      private static void startReport() {
+			  ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics)
+				  .convertRatesTo(TimeUnit.SECONDS)
+				  .convertDurationsTo(TimeUnit.MILLISECONDS)
+				  .build();
+			  reporter.start(1, TimeUnit.SECONDS);
+	  }
 }
