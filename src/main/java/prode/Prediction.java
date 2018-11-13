@@ -89,22 +89,28 @@ public class Prediction extends Model {
 			return 1;
 		if ((Integer)adm.get("equipoL") > (Integer)adm.get("equipoV") && (Integer)user.get("equipoL") > (Integer)user.get("equipoV"))
 			return 1;
+		if (((Integer)adm.get("equipoL") - (Integer)adm.get("equipoV")) == 0 && ((Integer)user.get("equipoL") - (Integer)user.get("equipoV")) == 0)
+			return 1;
 		return 0;	
 	}
 	
-	public void Guardarpuntaje(List<Prediction> UserList, List<Prediction> AdminList) {
+	public void guardarPuntaje(List<Prediction> UserList, List<Prediction> AdminList, int idFecha) {
 		int result = 0;
-		int id;
+		int idUser;
 		int j = 0;
 		for (int i = 0; i < UserList.size(); i++) {
 			result = result + compararPred(AdminList.get(j), UserList.get(i));
 			if (j == (AdminList.size()-1)) {
 				j = 0;
-				id = (Integer)UserList.get(i-1).get("id_usuario");
-				List<User> user = User.where("id = ?", id);
-				User u = user.get(0);
-				u.set("puntos", result);
-				u.saveIt();
+				idUser = (Integer)UserList.get(i-1).get("id_usuario");
+				//List<Point> points = Point.where("idUser = ? AND idFecha = ?", idUser, idFecha);
+				//Point p = points.get(0);
+				Point p = new Point();
+				//p.set("puntajeActual", result);
+				//p.puntajeTotal(idUser);
+				p.update("puntajeActual = ?", "idUser = '"+idUser+"' AND idFecha = '"+idFecha+"'", result);
+				int pTotal = p.puntajeTotal(idUser);
+				p.update("puntajeTotal = ?", "idUser = '"+idUser+"' AND idFecha = '"+idFecha+"'", pTotal);
 				result = 0;
 			}	
 			j++;
@@ -116,5 +122,10 @@ public class Prediction extends Model {
 	p.set("puntajeActual", result);
 	p.puntajeTotal(p, id);
 	p.saveIt();
+	
+	List<User> user = User.where("id = ?", id);	
+	User u = user.get(0);
+	u.set("puntos", result);
+	u.saveIt();
 	*/
 }
