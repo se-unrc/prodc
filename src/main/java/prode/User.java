@@ -65,4 +65,12 @@ public class User extends Model {
     	resultUser.put("superu", busqueda.get(0).get("superu"));
     	return resultUser;
     }
+    
+    public int id() {
+    	return this.getInteger("id");//IMPORTANTE
+    }
+    
+    public String username() {
+    	return this.getString("username");
+    }    
 }

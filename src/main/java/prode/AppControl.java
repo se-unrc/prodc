@@ -2,6 +2,7 @@ package prode;
 
 import java.util.*;
 import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.LazyList;
 import org.javalite.activejdbc.Model;
 
 import static spark.Spark.*;	
@@ -126,5 +127,12 @@ public class AppControl {
    		nPrediccion.Guardarpuntaje(predicciones, resultados);	
    			return new ModelAndView(nuevaPred, "./html/logsu.html");
    		}	
+	}
+	
+	public static ModelAndView observar(Request req, Response res) {
+	   	Map usuarios = new HashMap(); 
+	   	LazyList<User> userList = User.findAll();
+	   	usuarios.put("usuarios", userList);
+	   	return new ModelAndView (usuarios, "./html/verUsuarios.html");
 	}
 }

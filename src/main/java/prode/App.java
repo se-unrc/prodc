@@ -83,6 +83,8 @@ public class App{
 	   	get("/cargar",AppControl::cargarFecha, new MustacheTemplateEngine());
 
 	   	post("/cargar",AppControl::armarFecha, new MustacheTemplateEngine());
+	   	
+	   	get("/observar", AppControl::observar, new MustacheTemplateEngine());
 	 
 	   	/*
 	   	metrics.name(Queue.class, "requests", "size");
