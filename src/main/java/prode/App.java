@@ -17,18 +17,17 @@ import static spark.Spark.*;
 import Model.*;
 
 import com.codahale.metrics.*;
-import java.util.concurrent.TimeUnit;
+import utils.*;
 
 //Clase principal
 public class App
 {
-	static final MetricRegistry metrics = new MetricRegistry();
 	
     public static void main( String[] args )
     {
 		//metrica
-		Meter requests = metrics.meter("requests");
-		startReport();
+		Meter requests = Metrica.getRegistry().meter("requests");
+		Metrica.startReport();
 		
       //Directorio de recursos /imagenes/estilos/scripts
        staticFiles.location("/public/");
@@ -59,12 +58,5 @@ public class App
         new PredictionController(new PredictionDao(), new GameDao());
         new ResultsController(new GameDao());
       }
-      
-      private static void startReport() {
-			  ConsoleReporter reporter = ConsoleReporter.forRegistry(metrics)
-				  .convertRatesTo(TimeUnit.SECONDS)
-				  .convertDurationsTo(TimeUnit.MILLISECONDS)
-				  .build();
-			  reporter.start(1, TimeUnit.SECONDS);
-	  }
+
 }
