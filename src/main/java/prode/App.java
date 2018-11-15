@@ -26,8 +26,8 @@ public class App
     public static void main( String[] args )
     {
 		//metrica
-		Meter requests = Metrica.getRegistry().meter("requests");
-		Metrica.startReport();
+		Meter requests = Metricas.getRegistry().meter("requests");
+		Metricas.startReport();
 
       //Directorio de recursos /imagenes/estilos/scripts
        staticFiles.location("/public/");
