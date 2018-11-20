@@ -1,0 +1,18 @@
+{{> header}}
+  <div class="container">
+      <div class="panel panel-primary">
+      <div class="panel-heading">Crear un nuevo Equipo</div>
+      <div class="panel-body">
+        <form action="/team/save" method="post">
+        
+        <label for="nombre">Nombre del Equipo</label>
+        <input type="text" placeholder="Equipo" name="nombre" id="nombre">
+        <br>
+        
+        <label for ="imagen">Cargar escude del Equipo</label>
+        <input type="file" class="form-control-file" name="imagen" id="imagen">
+        
+        <input type="submit" value="Enviar">
+        
+        </form>
+{{> footer}}

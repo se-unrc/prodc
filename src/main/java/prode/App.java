@@ -57,6 +57,7 @@ public class App
         new UserController(new UserDao());
         new PredictionController(new PredictionDao(), new GameDao());
         new ResultsController(new GameDao());
+        new TeamController ();
       }
 
 }
