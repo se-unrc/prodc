@@ -13,18 +13,19 @@
   			<p align= "center">Seleccione la fecha a pronosticar</p>
   		</div>
 	</div>
-	<div class="container col-sm-3">
+	<div class="col-sm-3">
 		<form method = "get" action="/pronosticado">
       		<div>
         	<select name="fecha">
         		<option selected value=""> Elige la fecha </option>
         		{{#Fechas}}
-          		<option value="{{num_fecha}}">{{num_fecha}}</option>
+          			<option value="{{num_fecha}}">{{num_fecha}}</option>
 				{{/Fechas}}      	
         	</select>
       		</div>
-        	<a href="/logs"></a> <button type="submit" class="btn btn-primary mb-6">Seleccionar</button>
-		</form> 
+      		<br>
+        	<a href="/pronosticado"></a> <button type="submit" class="btn btn-primary mb-6">Pronosticar</button>
+        </form> 
 	</div>
   </body>
 </html>

@@ -83,6 +83,8 @@ public class App{
 	   	get("/cargar",AppControl::cargarFecha, new MustacheTemplateEngine());
 
 	   	post("/cargar",AppControl::armarFecha, new MustacheTemplateEngine());
+	   	
+	   	get("/observar", AppControl::observar, new MustacheTemplateEngine());
 	 
 	   	/*
 	   	metrics.name(Queue.class, "requests", "size");
@@ -98,7 +100,14 @@ public class App{
    		get("/pronosticado", AppControl::pronosticarFecha, new MustacheTemplateEngine());
 
 	   	post("/pronosticado", AppControl::guardarPronFecha, new MustacheTemplateEngine());
-	}   
+	   	
+	   	get("/modifpred", AppControl::seleccionFechaModif, new MustacheTemplateEngine());
+
+	   	get("/modifpredcargada", AppControl::modPronFecha, new MustacheTemplateEngine());
+
+	   	post("/modifpredcargada", AppControl::guardarModPronFecha, new MustacheTemplateEngine());
+	   	
+	   	}   
     
     //Metricas
     
