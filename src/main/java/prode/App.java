@@ -19,7 +19,7 @@ public class App{
 	
     public static void main( String[] args ) throws InterruptedException{ 
     	
-    
+    	staticFileLocation("/public");
     	/**
     	 * Apertura de la base de datos
     	 */

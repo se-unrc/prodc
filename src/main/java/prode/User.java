@@ -65,4 +65,13 @@ public class User extends Model {
     	resultUser.put("superu", busqueda.get(0).get("superu"));
     	return resultUser;
     }
+    
+    public static List<User> listaUserpuntosActuales(int idFecha) {
+    	List<User> Users = User.findBySQL("SELECT username FROM users a JOIN points b ON a.id = b.idUser where b.idFecha = '"+idFecha+"' ORDER BY b.puntajeActual DESC");
+    	return Users;
+    }
+    
+    public String username() {
+    	return this.getString("username");
+    }
 }

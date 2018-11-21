@@ -3,6 +3,7 @@ package prode;
 import java.util.*;
 import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.Model;
+import prode.Point;
 
 import static spark.Spark.*;	
 import prode.User;
@@ -37,6 +38,11 @@ public class AppControl {
 			idUser = (int) logUser.get("user");
 			if ((Boolean)logUser.get("superu") == false){
 				req.session().attribute("user", logUser.get("user"));
+				Schadule f = new Schadule();
+				List<Point> points = Point.listaPuntosPorFecha(f.ultimaFecha());
+				List<User> u = User.listaUserpuntosActuales(f.ultimaFecha());
+				logUser.put("puntos", points);
+				logUser.put("usuarios", u);
 				return new ModelAndView(logUser, "./html/logs.html");
 			} else {
 				req.session().attribute("user", logUser.get("user"));
@@ -51,7 +57,7 @@ public class AppControl {
    		Map nuevoTeam = new HashMap();
    		if (!nTeam.checkTeam(req)) {
    			nTeam.addTeam(req);
-			return new ModelAndView(nuevoTeam, "./html/logsu.html");
+			return new ModelAndView(nuevoTeam, "./html/agregarequipo.html");
    		} else {
    			nuevoTeam.put("Error", "Equipo ya cargado");
    			return new ModelAndView(nuevoTeam, "./html/agregarequipo.html");
