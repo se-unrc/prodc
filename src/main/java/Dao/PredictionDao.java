@@ -33,7 +33,7 @@ public class PredictionDao {
        nroPartido=13;//semifinales
        break;
        case 3:
-       nroPartido=15;//finalº
+       nroPartido=15;//final
        break;
    }
    for (int i=0; i < equipos.length; i++) {
