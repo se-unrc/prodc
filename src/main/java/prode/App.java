@@ -54,9 +54,10 @@ public class App
        );
 
         //Inicializa controladores
-        new UserController(new UserDao());
+        new Controller(new PredictionDao(), new GameDao(), new UserDao());
+        /*new UserController(new UserDao());
         new PredictionController(new PredictionDao(), new GameDao());
-        new ResultsController(new GameDao());
+        new ResultsController(new GameDao());*/
       }
 
 }
