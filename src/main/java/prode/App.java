@@ -32,7 +32,6 @@ public class App
     public static void main( String[] args )
     {
 		//metrica
-<<<<<<< HEAD
 		Meter requests = Metricas.getRegistry().meter("requests");
 		Metricas.startReport();
       
@@ -45,13 +44,7 @@ public class App
 		//Directorio de recursos /imagenes/estilos/scripts
 		staticFiles.externalLocation(projectDir + staticDir);
 			
-=======
-		/*Meter requests = Metricas.getRegistry().meter("requests");
-		Metricas.startReport();*/
 
-      //Directorio de recursos /imagenes/estilos/scripts
-       staticFiles.location("/public/");
->>>>>>> develop
        //Puerto de la aplicacion
        port(1112);
 
@@ -76,14 +69,7 @@ public class App
 
         //Inicializa controladores
         new Controller(new PredictionDao(), new GameDao(), new UserDao());
-        /*new UserController(new UserDao());
-        new PredictionController(new PredictionDao(), new GameDao());
-<<<<<<< HEAD
-        new ResultsController(new GameDao());
         new TeamController(uploadDir);
-=======
-        new ResultsController(new GameDao());*/
->>>>>>> develop
       }
 
 }

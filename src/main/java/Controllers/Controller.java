@@ -60,7 +60,11 @@ public class Controller {
       Map<String, List<Team>> map = new HashMap<>();
       List<Team> lt = gameDao.listTeams();
       map.put("games",lt);
-			map.put("nombre",req.session().attribute("USER"));
+	   map.put("nombre",req.session().attribute("USER"));
+	  String type = req.session().attribute("TYPE");
+	  if(type.equalsIgnoreCase("1")){
+		 map.put("admin",req.session().attribute("TYPE"));
+	  }
       return new ModelAndView(map, "./Dashboard/teams.mustache");
     }, new MustacheTemplateEngine());
 
