@@ -8,8 +8,9 @@ public class Team extends Model {
   }
   public Team(){}
 
-  public Team(String nombre) {
+  public Team(String nombre, String image) {
 	  set("name", nombre);
+	  set("image", image);
 	  saveIt();
   }
 

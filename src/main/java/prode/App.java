@@ -19,6 +19,12 @@ import Model.*;
 import com.codahale.metrics.*;
 import Utils.*;
 
+
+import java.io.*;
+import java.nio.file.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
 //Clase principal
 public class App
 {
@@ -28,9 +34,16 @@ public class App
 		//metrica
 		Meter requests = Metricas.getRegistry().meter("requests");
 		Metricas.startReport();
-
-      //Directorio de recursos /imagenes/estilos/scripts
-       staticFiles.location("/public/");
+      
+       //Directorio upload donde se cargan las imagenes de los Equipos
+       File uploadDir = new File("src/main/resources/public/images");
+       uploadDir.mkdir(); // create the upload directory if it doesn't exist
+       
+       	String projectDir = System.getProperty("user.dir");
+		String staticDir = "/src/main/resources/public";
+		//Directorio de recursos /imagenes/estilos/scripts
+		staticFiles.externalLocation(projectDir + staticDir);
+			
        //Puerto de la aplicacion
        port(1112);
 
@@ -57,7 +70,7 @@ public class App
         new UserController(new UserDao());
         new PredictionController(new PredictionDao(), new GameDao());
         new ResultsController(new GameDao());
-        new TeamController ();
+        new TeamController(uploadDir);
       }
 
 }

@@ -1,9 +1,11 @@
 {{> header}}
   <div class="container">
       <div class="panel panel-primary">
-      <div class="panel-heading">Predicciones</div>
+      <div class="panel-heading">Equipos</div>
       <div class="panel-body">
-        <p>Partidos que fueron jugados hasta el momento</p>
+        {{#admin}}
+			<a href="/team/new" class="btn btn-success"> Agregar </a>
+		{{/admin}}        
       </div>
       <table class="table table-striped text-center">
       <thead>
@@ -17,7 +19,7 @@
           <tr>
             <td>{{name}}</td>
             <td>
-              <img src="images/{{image}}" alt={{image}}>
+              <img src="images/{{image}}" alt={{image}}  height="42" width="42">
             </td>
 
           </tr>
