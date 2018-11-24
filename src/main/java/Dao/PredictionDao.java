@@ -35,6 +35,9 @@ public class PredictionDao {
        case 3:
        nroPartido=15;//final
        break;
+       case 4:
+        nroPartido=16; //Ganador
+       break;
    }
    for (int i=0; i < equipos.length; i++) {
         equipo_local = equipos[i];

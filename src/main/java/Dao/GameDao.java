@@ -28,9 +28,9 @@ public class GameDao {
          case 3:
          nroPartido=15;//final
          break;
-         /*case 4:
-          nroPartido=?; //Ganador
-          break;*/
+         case 4:
+          nroPartido=16; //Ganador
+         break;
      }
      for (int i=0; i < equipos.length; i++) {
          //Busca el juego para despues actualizar los equipo
