@@ -28,4 +28,6 @@ INSERT INTO games VALUES (default ,"", "", 2, '2018-07-11', NOW(), NOW());
 
 INSERT INTO games VALUES (default ,"", "", 3, '2018-07-15', NOW(), NOW());
 
+INSERT INTO games VALUES (default ,"", "", 4, '2018-07-15', NOW(), NOW());
+
 INSERT INTO users VALUES (DEFAULT,"admin","admin@admin",123,1,null,NOW(),NOW());

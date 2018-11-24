@@ -31,6 +31,8 @@ public class PredictionController {
 					return new ModelAndView(map, "./Dashboard/semifinales.mustache");
 				case "Finales":
 					return new ModelAndView(map, "./Dashboard/finales.mustache");
+				case "Ganador":
+					return new ModelAndView(map, "./Dashboard/ganador.mustache"); //Implementar el mustache
 			}
       return new ModelAndView(map, "./Dashboard/index.mustache");
     }, new MustacheTemplateEngine());
