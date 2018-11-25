@@ -176,10 +176,8 @@ public class Controller {
 		boolean result = false;
 		List<String> lt = Team.findAll().collect("name");
 		for(int i=0; i<listaEquipos.length; i++){
-			System.out.println(listaEquipos[i]);
 			if (!lt.contains(listaEquipos[i])) result = true;
 		}
 		return result;
 	}
-
 }
