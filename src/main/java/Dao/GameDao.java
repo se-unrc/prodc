@@ -27,11 +27,10 @@ public class GameDao {
          game.set("team_vis",equipo_visitante);
          game.saveIt();
          updatePoints(nroPartido);
-         }
          i++;
          nroPartido++;
+       }
      }
-  }
 
 
  //Actualiza los puntos de los usuarios en un determinado juego
