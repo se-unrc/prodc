@@ -32,7 +32,7 @@ public class Controller {
 				case "Finales":
 					return new ModelAndView(map, "./Dashboard/finales.mustache");
 				case "Ganador":
-					return new ModelAndView(map, "./Dashboard/ganador.mustache"); //Implementar el mustache
+					return new ModelAndView(map, "./Dashboard/ganador.mustache");
 			}
       return new ModelAndView(map, "./Dashboard/index.mustache");
     }, new MustacheTemplateEngine());
@@ -43,16 +43,22 @@ public class Controller {
 			String[] games = req.queryParamsValues("partidos[]");
 			String  fecha = (req.queryParams("fecha")).toString();
 			int option = Integer.parseInt(fecha);
-			int id_user = req.session().attribute("ID");
-			String type = req.session().attribute("TYPE");
-			map.put("nombre",req.session().attribute("USER"));
-			if(type.equalsIgnoreCase("1")){
-         gameDao.updateGames(option, games);
-       }
- 			else {
-        predictionDao.createPrediction(id_user, option, games);
-      }
-      return new ModelAndView(map, "./Dashboard/profile.mustache");
+			//si los juegos fueron cargados incorrectamente
+			if (gameArrayError(option, games)){
+				return new ModelAndView(null, "./405.mustache");
+			}
+			else{
+					int id_user = req.session().attribute("ID");
+					String type = req.session().attribute("TYPE");
+					map.put("nombre",req.session().attribute("USER"));
+					if(type.equalsIgnoreCase("1")){
+		         gameDao.updateGames(option, games);
+		       }
+		 			else {
+		        predictionDao.createPrediction(id_user, option, games);
+		      }
+					return new ModelAndView(map, "./Dashboard/profile.mustache");
+			}
     }, new MustacheTemplateEngine());
 
     //Obtiene todos los equipos y los muestra
@@ -165,5 +171,21 @@ public class Controller {
         return new ModelAndView(null, "./Dashboard/index.mustache");
       }, new MustacheTemplateEngine());
 }
+
+		public boolean gameArrayError(int caso, String [] listaEquipos){
+				switch(caso){
+						case 0:
+						return (listaEquipos.length==16);//octavos=16 equipos
+						case 1:
+						return (listaEquipos.length==8);//cuartos=8 equipos
+						case 2:
+						return (listaEquipos.length==4);//semifinales= 4 equipos
+						case 3:
+						return (listaEquipos.length==2);//final = 2 equipos
+						case 4:
+						return (listaEquipos.length==1); //Ganador = 1 equipo
+				}
+				return false;
+		}
 
 }
