@@ -173,19 +173,13 @@ public class Controller {
 }
 
 		public boolean gameArrayError(int caso, String [] listaEquipos){
-				switch(caso){
-						case 0:
-						return !(listaEquipos.length==16);//octavos=16 equipos
-						case 1:
-						return !(listaEquipos.length==8);//cuartos=8 equipos
-						case 2:
-						return !(listaEquipos.length==4);//semifinales= 4 equipos
-						case 3:
-						return !(listaEquipos.length==2);//final = 2 equipos
-						case 4:
-						return !(listaEquipos.length==1); //Ganador = 1 equipo
-				}
-				return false;
+			boolean result = false;
+			List<String> lt = Team.findAll().collect("name");
+			for(int i=0; i<listaEquipos.length; i++){
+					System.out.println(listaEquipos[i]);
+					if (!lt.contains(listaEquipos[i])) result = true;
+			}
+			return result;
 		}
 
 }

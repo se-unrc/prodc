@@ -14,18 +14,16 @@ public class GameDao {
   /*pre: lista de equipos cargada correctamente
     post: escribe los juegos de una fecha en la base de datos
   */
- public void updateGames(int fecha, String [] equipos) {
+ public void updateGames(int fecha, String[] equipos) {
      String equipo_local;
      String equipo_visitante;
      int nroPartido = PredictionDao.selector(fecha);
      for (int i=0; i < equipos.length; i++) {
          //Busca el juego para despues actualizar los equipo
-         Game game = Game.findFirst(" id = ?", nroPartido);
          equipo_local = equipos[i];
          equipo_visitante = equipos[i+1];
-         game.set("team_loc",equipo_local);
-         game.set("team_vis",equipo_visitante);
-         game.saveIt();
+         Game.update("team_loc=?", "id=?", equipo_local, nroPartido);
+         Game.update("team_loc=?", "id=?", equipo_visitante, nroPartido);
          updatePoints(nroPartido);
          i++;
          nroPartido++;

@@ -6,13 +6,14 @@
           <strong>Ganador</strong>
         </div>
         <div class="col-md-4 col-sm-4">
-         <img src="images/copa.jpg" alt="copa" height="140" width="60" align="right"> 
+         <img src="images/copa.jpg" alt="copa" height="140" width="60" align="right">
         </div>
         <div class="col-md-4 col-sm-6 grupos">
           <span class="label label-default">Campeon</span>
          <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Equipo</span>
-              <input type="text" class="form-control" placeholder="Equipo" name="partidos[]" aria-describedby="sizing-addon3">
+              <input id="hidden" type="text" class="form-control" placeholder="Equipo" name="partidos[]" aria-describedby="sizing-addon3">
+              <input hidden id="hidden2" name="partidos[]">
             </div>
         </div>
         <div class="container text-center">
@@ -21,4 +22,15 @@
         </div>
     </form>
   </div>
+
+<script type="text/javascript">
+    var fieldBlock = document.getElementById("hidden")
+      , fieldHiden = document.getElementById("hidden2");
+
+    function cloneValue(){
+        fieldHiden.value = fieldBlock.value
+    }
+
+    fieldBlock.onchange = cloneValue;
+</script>
 {{> footer }}
