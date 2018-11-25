@@ -11,45 +11,39 @@ import Model.Prediction;
 
 public class PredictionDao {
 
-
-
   //Crea predicciones para usuarios
-  /*Segun que fecha ingrese el usuario,
-    va a ser el nroPartido(id_game en database)
-    en fecha=0 (octavos) son 8 partidos y comienza con el primero
-    la */
+  /*pre: lista de equipos cargada correctamente
+    post: escribe los predicciones de una fecha del usueario en la base de datos
+  */
  public void createPrediction(int id_user, int fecha,String [] equipos) {
    String equipo_local;
    String equipo_visitante;
-   int nroPartido = 0;
-   switch(fecha){
-       case 0:
-       nroPartido=1;//octavos
-       break;
-       case 1:
-       nroPartido=9;//cuartos
-       break;
-       case 2:
-       nroPartido=13;//semifinales
-       break;
-       case 3:
-       nroPartido=15;//final
-       break;
-       case 4:
-        nroPartido=16; //Ganador
-       break;
-   }
+   int nroPartido = selector(fecha);
    for (int i=0; i < equipos.length; i++) {
-        equipo_local = equipos[i];
-        equipo_visitante = equipos[i+1];
-        if(!equipos[i].isEmpty() && !equipos[i+1].isEmpty()){
-           Prediction prediccion = new Prediction(nroPartido, id_user, equipo_local, equipo_visitante, fecha);
-        }
-        else{/*entra por else siel ususario no lleno los campos del equipo, tratar error*/}
-        i++;
-        nroPartido++;
-    }
+      equipo_local = equipos[i];
+      equipo_visitante = equipos[i+1];
+      Prediction prediccion = new Prediction(nroPartido, id_user, equipo_local, equipo_visitante, fecha);
+      i++;
+      nroPartido++;
+   }
  }
+
+ //Selecciona el nroPartido adecuado
+  public static int selector (int caso){
+    switch(caso){
+        case 0:
+        return 1;//octavos
+        case 1:
+        return 9;//cuartos
+        case 2:
+        return 13;//semifinales
+        case 3:
+        return 15;//final
+        case 4:
+        return 16; //Ganador
+    }
+    return 0;
+  }
 
  //Lista todas las predicciones de un usuario
  public List<Prediction> listPredictions(String id_user){

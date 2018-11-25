@@ -11,43 +11,28 @@ import Model.*;
 public class GameDao {
 
   //Actualiza la tabla juego solo si es administrador
+  /*pre: lista de equipos cargada correctamente
+    post: escribe los juegos de una fecha en la base de datos
+  */
  public void updateGames(int fecha, String [] equipos) {
      String equipo_local;
      String equipo_visitante;
-     int nroPartido = 0;
-     switch(fecha){
-         case 0:
-         nroPartido=1;//octavos
-         break;
-         case 1:
-         nroPartido=9;//cuartos
-         break;
-         case 2:
-         nroPartido=13;//semifinales
-         break;
-         case 3:
-         nroPartido=15;//final
-         break;
-         case 4:
-          nroPartido=16; //Ganador
-         break;
-     }
+     int nroPartido = PredictionDao.selector(fecha);
      for (int i=0; i < equipos.length; i++) {
          //Busca el juego para despues actualizar los equipo
          Game game = Game.findFirst(" id = ?", nroPartido);
-         //Verifica si existe algun dato que actualizar
-         if(!equipos[i].isEmpty() && !equipos[i+1].isEmpty()){
-             equipo_local = equipos[i];
-             equipo_visitante = equipos[i+1];
-             game.set("team_loc",equipo_local);
-             game.set("team_vis",equipo_visitante);
-             game.saveIt();
-             updatePoints(nroPartido);
+         equipo_local = equipos[i];
+         equipo_visitante = equipos[i+1];
+         game.set("team_loc",equipo_local);
+         game.set("team_vis",equipo_visitante);
+         game.saveIt();
+         updatePoints(nroPartido);
          }
          i++;
          nroPartido++;
      }
-    }
+  }
+
 
  //Actualiza los puntos de los usuarios en un determinado juego
  private void updatePoints(int id_game){
