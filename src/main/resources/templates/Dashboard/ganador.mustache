@@ -12,7 +12,16 @@
           <span class="label label-default">Campeon</span>
          <div class="input-group input-group-sm">
               <span class="input-group-addon" id="sizing-addon3">Equipo</span>
-              <input id="hidden" type="text" class="form-control" placeholder="Equipo" name="partidos[]" aria-describedby="sizing-addon3">
+              
+              
+               <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teams}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teams}}
+				</select> 
+              
+              
+             
               <input hidden id="hidden2" name="partidos[]">
             </div>
         </div>

@@ -19,7 +19,12 @@ public class Controller {
 
 		//Direcciona a la pagina correspondiente
 		post("/prediction", (req, res) -> {
-			Map map = new HashMap();
+			
+			Map<String, List<Team>> map = new HashMap<>();
+			List<Team> lt = gameDao.listTeams();
+			map.put("teams",lt);
+			
+			
 			String option = req.queryParams("option");
 			map.put("nombre",req.session().attribute("USER"));
 			switch(option){
