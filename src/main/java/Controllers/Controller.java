@@ -15,11 +15,12 @@ import spark.ModelAndView;
 
 public class Controller {
 
+	static Map map = new HashMap();			
+
 	public Controller(final PredictionDao predictionDao, final GameDao gameDao, final UserDao userDao) {
 
 		//Direcciona a la pagina correspondiente
 		post("/prediction", (req, res) -> {
-			Map map = new HashMap();
 			String option = req.queryParams("option");
 			map.put("nombre",req.session().attribute("USER"));
 			switch(option){
@@ -39,7 +40,6 @@ public class Controller {
 
 		//Crea una nueva prediccion para un usuario
 		post("/prediction/new", (req, res) -> {
-			Map map = new HashMap();
 			String[] games = req.queryParamsValues("partidos[]");
 			String  fecha = (req.queryParams("fecha")).toString();
 			int option = Integer.parseInt(fecha);
@@ -110,7 +110,6 @@ public class Controller {
 
 		//Utilizado para cerrar sesion - borrar sesion
 		get("/index", (req, res) -> {
-			Map map = new HashMap();
 			req.session().removeAttribute("USER");
 			req.session().removeAttribute("ID");
 			req.session().removeAttribute("TYPE");
@@ -121,7 +120,6 @@ public class Controller {
 
 		//Buscar un usuario
 		get("/users/:id", (req, res) -> {
-			Map map = new HashMap();
 			String id = req.params(":id");
 			User user = userDao.getUser(id);
 			if(user == null){
@@ -133,14 +131,13 @@ public class Controller {
 
 		//Utilizado para redireccionar desde elementos a
 		get("/profile", (req, res) -> {
-			Map map = new HashMap();
 			map.put("nombre",req.session().attribute("USER"));
 			return new ModelAndView(map, "./Dashboard/profile.mustache");
 		}, new MustacheTemplateEngine());
 
 		//Controla y autentifica al usuario - inicia session variables
 		post("/profile", (req, res) -> {
-			Map map = new HashMap();
+
 			String username = req.queryParams("username");
 			String pass = req.queryParams("password");
 			User user = userDao.isUser(username,pass);
