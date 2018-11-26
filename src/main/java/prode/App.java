@@ -50,7 +50,7 @@ public class App
 
 		//Abre conexion antes de cada solicitud
 		before((request, response) -> {
-			//requests.mark();
+			requests.mark();
 			Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/prode_test?nullNamePatternMatchesAll=true", "root", "root");
 		});
 

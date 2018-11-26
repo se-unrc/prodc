@@ -66,7 +66,6 @@ public class Controller {
 
 		//Obtiene todos los equipos y los muestra
 		get("/teams", (req, res) -> {
-			//Map<String, List<Team>> teamsMap = new HashMap<>();
 			List<Team> lt = gameDao.listTeams();
 			teamsMap.put("games",lt);
 			teamsMap.put("nombre",req.session().attribute("USER"));
@@ -79,7 +78,6 @@ public class Controller {
 
 		//Devuelve tabla de puntos renderiza en results
 		get("/results", (req, res) -> {
-			//Map<String,List<User>> resultsMap = new HashMap<>();
 			List<User> lu = gameDao.listPoints();
 			resultsMap.put("users",lu);
 			resultsMap.put("nombre",req.session().attribute("USER"));
@@ -88,7 +86,6 @@ public class Controller {
 
 		//Devuelve tabla de juegos creados por el administrador
 		get("/results/games", (req, res) -> {
-			//Map<String,List<Game>> gamesMap = new HashMap<>();
 			List<Game> lg = gameDao.listGames();
 			gamesMap.put("games",lg);
 			gamesMap.put("nombre",req.session().attribute("USER"));

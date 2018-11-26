@@ -23,7 +23,7 @@ public class GameDao {
 			equipo_local = equipos[i];
 			equipo_visitante = equipos[i+1];
 			Game.update("team_loc=?", "id=?", equipo_local, nroPartido);
-			Game.update("team_loc=?", "id=?", equipo_visitante, nroPartido);
+			Game.update("team_vis=?", "id=?", equipo_visitante, nroPartido);
 			updatePoints(nroPartido);
 			i++;
 			nroPartido++;
