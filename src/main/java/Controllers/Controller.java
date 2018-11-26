@@ -15,7 +15,7 @@ import spark.ModelAndView;
 
 public class Controller {
 
-	static Map map = new HashMap();			
+	static Map map = new HashMap();
 
 	public Controller(final PredictionDao predictionDao, final GameDao gameDao, final UserDao userDao) {
 
@@ -76,19 +76,19 @@ public class Controller {
 
 		//Devuelve tabla de puntos renderiza en results
 		get("/results", (req, res) -> {
-			Map<String,List<User>> map = new HashMap<>();
+			Map<String,List<User>> resultsMap = new HashMap<>();
 			List<User> lu = gameDao.listPoints();
-			map.put("users",lu);
-			map.put("nombre",req.session().attribute("USER"));
+			resultsMap.put("users",lu);
+			resultsMap.put("nombre",req.session().attribute("USER"));
 			return new ModelAndView(map, "./Dashboard/results.mustache");
 		}, new MustacheTemplateEngine());
 
 		//Devuelve tabla de juegos creados por el administrador
 		get("/results/games", (req, res) -> {
-			Map<String,List<Game>> map = new HashMap<>();
+			Map<String,List<Game>> gamesMap = new HashMap<>();
 			List<Game> lg = gameDao.listGames();
-			map.put("games",lg);
-			map.put("nombre",req.session().attribute("USER"));
+			gamesMap.put("games",lg);
+			gamesMap.put("nombre",req.session().attribute("USER"));
 			return new ModelAndView(map, "./Dashboard/games.mustache");
 		}, new MustacheTemplateEngine());
 
