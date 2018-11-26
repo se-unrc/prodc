@@ -16,6 +16,9 @@ import spark.ModelAndView;
 public class Controller {
 
 	static Map map = new HashMap();
+	static Map<String, List<Team>> teamsMap = new HashMap<>();
+	static Map<String,List<User>> resultsMap = new HashMap<>();
+	static Map<String,List<Game>> gamesMap = new HashMap<>();
 
 	public Controller(final PredictionDao predictionDao, final GameDao gameDao, final UserDao userDao) {
 
@@ -63,10 +66,10 @@ public class Controller {
 
 		//Obtiene todos los equipos y los muestra
 		get("/teams", (req, res) -> {
-			Map<String, List<Team>> map = new HashMap<>();
+			//Map<String, List<Team>> teamsMap = new HashMap<>();
 			List<Team> lt = gameDao.listTeams();
-			map.put("games",lt);
-			map.put("nombre",req.session().attribute("USER"));
+			teamsMap.put("games",lt);
+			teamsMap.put("nombre",req.session().attribute("USER"));
 			String type = req.session().attribute("TYPE");
 			if(type.equalsIgnoreCase("1")){
 				map.put("admin",req.session().attribute("TYPE"));
@@ -76,7 +79,7 @@ public class Controller {
 
 		//Devuelve tabla de puntos renderiza en results
 		get("/results", (req, res) -> {
-			Map<String,List<User>> resultsMap = new HashMap<>();
+			//Map<String,List<User>> resultsMap = new HashMap<>();
 			List<User> lu = gameDao.listPoints();
 			resultsMap.put("users",lu);
 			resultsMap.put("nombre",req.session().attribute("USER"));
@@ -85,7 +88,7 @@ public class Controller {
 
 		//Devuelve tabla de juegos creados por el administrador
 		get("/results/games", (req, res) -> {
-			Map<String,List<Game>> gamesMap = new HashMap<>();
+			//Map<String,List<Game>> gamesMap = new HashMap<>();
 			List<Game> lg = gameDao.listGames();
 			gamesMap.put("games",lg);
 			gamesMap.put("nombre",req.session().attribute("USER"));
@@ -137,7 +140,6 @@ public class Controller {
 
 		//Controla y autentifica al usuario - inicia session variables
 		post("/profile", (req, res) -> {
-
 			String username = req.queryParams("username");
 			String pass = req.queryParams("password");
 			User user = userDao.isUser(username,pass);
