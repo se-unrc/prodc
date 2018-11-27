@@ -15,6 +15,12 @@ public class Team extends Model {
 	  saveIt();
   }
 
+  public Team(String nombre, String image) {
+    set("name", nombre);
+    set("image", image);
+    saveIt();
+  }
+
   public String getImage() {
 	  return (getString("image"));
   }
