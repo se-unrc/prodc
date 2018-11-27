@@ -1,0 +1,234 @@
+<!-- es bueno renderizar los inputs? o nell-->
+{{> header }}
+  <div class="container">
+    <form class="" action="/prediction/new" method="post">
+      <div class="row">
+          <div class="well well-lg text-center">
+            <strong>Partidos Octavos</strong>
+          </div>
+        <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 1</span>
+         <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">1° Grupo A</span>
+              
+               <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsA}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsA}}
+				</select> 
+              
+              
+              
+             
+            </div>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">2° Grupo B</span>
+              
+               <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsB}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsB}}
+				</select> 
+              
+              
+         
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 2</span>
+           <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">1° Grupo C</span>
+              
+               <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsC}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsC}}
+				</select> 
+              
+              
+              
+            
+            </div>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">2° Grupo D</span>
+              
+               <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsD}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsD}}
+				</select> 
+              
+              
+            <!-- <input type="text" class="form-control" placeholder="Equipo" name="partidos[]" aria-describedby="sizing-addon3">-->
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 3</span>
+          <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">1° Grupo E</span>
+              
+               <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsE}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsE}}
+				</select> 
+              
+              
+             <!-- <input type="text" class="form-control" placeholder="Equipo" name="partidos[]" aria-describedby="sizing-addon3">-->
+          </div>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">2° Grupo F</span>
+            
+            <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsF}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsF}}
+				</select> 
+              
+            
+            
+            
+            
+           
+          </div>
+          </div>
+        <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 4</span>
+          <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">1° Grupo B</span>
+              <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsB}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsB}}
+				</select> 
+              
+              
+              
+        
+          </div>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">2° Grupo A</span>
+            <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsA}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsA}}
+				</select> 
+              
+            
+          </div>
+          </div>
+        <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 5</span>
+          <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">1° Grupo D</span>
+              
+              <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsD}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsD}}
+				</select> 
+              
+          
+          </div>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">2° Grupo C</span>
+            <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsC}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsC}}
+				</select> 
+              
+            
+            
+            
+          </div>
+          </div>
+        <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 6</span>
+          <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">1° Grupo F</span>
+              <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsF}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsF}}
+				</select> 
+              
+              
+              
+             
+          </div>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">2° Grupo E</span>
+            
+            <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsE}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsE}}
+				</select> 
+              
+          
+          </div>
+          </div>
+        <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 7</span>
+          <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">1° Grupo H</span>
+              
+              <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsH}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsH}}
+				</select> 
+              
+            
+          </div>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">2° Grupo G</span>
+            <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsG}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsG}}
+				</select> 
+              
+            
+          </div>
+          </div>
+        <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Juego 8</span>
+          <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">1° Grupo G</span>
+              
+              <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsG}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsG}}
+				</select> 
+              
+              
+          </div>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="sizing-addon3">1° Grupo H</span>
+            
+            <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teamsH}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teamsH}}
+				</select> 
+              
+          
+          </div>
+          </div>
+        </div>
+        <div class="container text-center">
+            <input type="submit" class="btn btn-success" name="registro" value="Registrar">
+          <input type="hidden" name="fecha" value="0">
+        </div>
+    </form>
+  </div>
+{{> footer }}
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+  });
+</script>

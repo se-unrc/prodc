@@ -1,0 +1,53 @@
+{{> header }}
+  <div class="container">
+    <div class="jumbotron jumbo">
+      <div class="jumbo-in">
+        <h1>Bienvenido al prode!</h1>
+        <p>Hola jugador, en esta pagina podrás registrar tus predicciones para el mundial 2018!</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Mira el proyecto en github</a></p>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Cómo jugar?</h3>
+          </div>
+          <div class="panel-body text-justify">
+            Para poder jugar deberás de predecir todos los partidos de las fechas pertenecientes a la fase de octavos, cuartos, semifinales y la gran final,
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Donde veo mis puntos?</h3>
+          </div>
+          <div class="panel-body text-justify">
+            En la parte superior existe un botón que te llevará a la página en la que podrás ver tus resultados!!.
+          </div>
+        </div>
+      </div>
+    </div>
+    <form action="/prediction" method="post">
+      <div class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" role="group">
+          <input type="submit" value="Octavos" name="option" class="btn btn-success"/>
+        </div>
+        <div class="btn-group" role="group">
+          <input type="submit" value="Cuartos" name="option" class="btn btn-success"/>
+        </div>
+        <div class="btn-group" role="group">
+          <input type="submit" value="Semifinales" name="option" class="btn btn-success"/>
+        </div>
+        <div class="btn-group" role="group">
+          <input type="submit" value="Finales" name="option" class="btn btn-success"/>
+        </div>
+        <div class="btn-group" role="group">
+          <input type="submit" value="Ganador" name="option" class="btn btn-success"/>
+        </div>
+      </div>
+    </form>
+    <br>
+  </div>
+{{> footer }}

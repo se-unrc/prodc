@@ -1,0 +1,28 @@
+{{> header}}
+  <div class="container">
+      <div class="panel panel-primary">
+      <div class="panel-heading">Juegos</div>
+      <div class="panel-body">
+        <p>Partidos que fueron jugados hasta el momento</p>
+      </div>
+      <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th class="col-md-4 text-center" scope="col">Local</th>
+          <th class="col-md-4 text-center" scope="col">Visitante</th>
+          <th class="col-md-4 text-center" scope="col">Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#games}}
+          <tr>
+            <td>{{getTeamLoc}}</td>
+            <td>{{getTeamVis}}</td>
+            <td>{{getDateGame}}</td>
+          </tr>
+        {{/games}}
+      </tbody>
+    </table>
+    </div>
+  </div>
+{{> footer}}

@@ -1,0 +1,31 @@
+{{> header}}
+  <div class="container">
+      <div class="panel panel-primary">
+      <div class="panel-heading">Equipos</div>
+      <div class="panel-body">
+        {{#admin}}
+			<a href="/team/new" class="btn btn-success"> Agregar </a>
+		{{/admin}}        
+      </div>
+      <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th class="col-md-6 text-center" scope="col">Nombre</th>
+          <th class="col-md-6 text-center" scope="col">Bandera</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#games}}
+          <tr>
+            <td>{{name}}</td>
+            <td>
+              <img src="images/{{image}}" alt={{image}}  height="42" width="42">
+            </td>
+
+          </tr>
+        {{/games}}
+      </tbody>
+    </table>
+    </div>
+  </div>
+{{> footer}}

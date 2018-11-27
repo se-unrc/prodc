@@ -1,0 +1,45 @@
+{{> header }}
+  <div class="container">
+    <form class="" action="/prediction/new" method="post">
+      <div class="row">
+        <div class="well well-lg text-center">
+          <strong>Ganador</strong>
+        </div>
+        <div class="col-md-4 col-sm-4">
+         <img src="images/copa.jpg" alt="copa" height="140" width="60" align="right">
+        </div>
+        <div class="col-md-4 col-sm-6 grupos">
+          <span class="label label-default">Campeon</span>
+         <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">Equipo</span>
+              
+              
+               <select name="partidos[]" class="form-control" id="hidden" >
+               {{#teams}}
+					<option value="{{name}}">{{name}}</option>
+				{{/teams}}
+				</select> 
+              
+              
+             
+              <input hidden id="hidden2" name="partidos[]">
+            </div>
+        </div>
+        <div class="container text-center">
+            <input type="submit" class="btn btn-success" name="registro" value="Registrar">
+            <input type="hidden" name="fecha" value="4">
+        </div>
+    </form>
+  </div>
+
+<script type="text/javascript">
+    var fieldBlock = document.getElementById("hidden")
+      , fieldHiden = document.getElementById("hidden2");
+
+    function cloneValue(){
+        fieldHiden.value = fieldBlock.value
+    }
+
+    fieldBlock.onchange = cloneValue;
+</script>
+{{> footer }}

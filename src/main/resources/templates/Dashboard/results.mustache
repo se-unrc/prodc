@@ -1,0 +1,28 @@
+{{> header}}
+  <div class="container">
+      <div class="panel panel-primary">
+      <div class="panel-heading">Puntajes usuarios</div>
+      <div class="panel-body">
+        <p>En esta sección se presentan los resultados hasta la fecha</p>
+      </div>
+      <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th class="col-md-4 text-center" scope="col">Nombre</th>
+          <th class="col-md-4 text-center" scope="col">Correo</th>
+          <th class="col-md-4 text-center" scope="col">Puntos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#users}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{email}}</td>
+            <td>{{score}}</td>
+          </tr>
+        {{/users}}
+      </tbody>
+    </table>
+    </div>
+  </div>
+{{> footer}}
