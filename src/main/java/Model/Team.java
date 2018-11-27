@@ -8,9 +8,10 @@ public class Team extends Model {
   }
   public Team(){}
 
-  public Team(String nombre, String image) {
+  public Team(String nombre, String image, String group_letter) {
 	  set("name", nombre);
 	  set("image", image);
+    set("group_letter", group_letter);
 	  saveIt();
   }
 
@@ -20,6 +21,10 @@ public class Team extends Model {
 
   public String getName() {
 	  return (getString("name"));
+  }
+
+  public String getGroup_letter(){
+    return(getString("group_letter"));
   }
 
 
